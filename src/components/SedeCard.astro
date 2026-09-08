@@ -9,12 +9,15 @@ interface Props {
 }
 
 const { sede, headingLevel = "h3" } = Astro.props;
-const { nome, citta, claim, sommario, stato, copertina, copertinaAlt } = sede.data;
+const { nome, citta, claim, sommario, stato, copertina, copertinaAlt, esterno } = sede.data;
 const Heading = headingLevel;
+const href = esterno ?? withBase(`/sedi/${sede.id}`);
 ---
 
 <a
-  href={withBase(`/sedi/${sede.id}`)}
+  href={href}
+  target={esterno ? "_blank" : undefined}
+  rel={esterno ? "noopener noreferrer" : undefined}
   class="grid overflow-hidden rounded-card border border-pietra sm:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]"
 >
   <div class="bg-nebbia">

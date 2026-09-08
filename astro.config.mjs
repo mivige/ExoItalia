@@ -11,6 +11,11 @@ export default defineConfig({
   // radice. Rimuovere "base" (e src/lib/paths.ts smette di servire) non
   // appena il dominio definitivo va in produzione.
   base: '/ExoItalia',
+  // Exo Molise è una sede autonoma con un proprio sito: niente pagina
+  // interna, solo un redirect per chi arriva su questo percorso.
+  redirects: {
+    '/sedi/molise': 'https://www.exomolise.it/',
+  },
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],

@@ -1,11 +1,8 @@
 ---
-import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import TeamCard from "../components/TeamCard.astro";
-
-const team = (await getCollection("team")).sort((a, b) => a.data.ordine - b.data.ordine);
+import { withBase } from "../lib/paths";
 ---
 
 <Base
@@ -58,7 +55,7 @@ const team = (await getCollection("team")).sort((a, b) => a.data.ordine - b.data
       </div>
     </section>
 
-    <section class="border-b border-pietra bg-nebbia">
+    <section class="bg-nebbia">
       <div class="mx-auto max-w-page px-6 py-16 md:py-24">
         <h2 class="font-titoli font-semibold text-verde">La nostra missione</h2>
         <p class="mt-6 max-w-prose text-body-lg">
@@ -66,15 +63,15 @@ const team = (await getCollection("team")).sort((a, b) => a.data.ordine - b.data
           facciamo con progetti innovativi e sostenibili, insieme a chi
           quei territori li vive.
         </p>
-      </div>
-    </section>
-
-    <section>
-      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
-        <h2 class="font-titoli font-semibold text-verde">Consiglio direttivo</h2>
-        <ul class="mt-10">
-          {team.map((persona) => <TeamCard persona={persona} />)}
-        </ul>
+        <p class="mt-6 text-body">
+          Il consiglio direttivo è quello della sede storica di Latina:{" "}
+          <a
+            href={withBase("/sedi/latina")}
+            class="underline decoration-verde/40 underline-offset-4 hover:decoration-verde"
+          >
+            scoprilo nella pagina della sede
+          </a>.
+        </p>
       </div>
     </section>
   </main>

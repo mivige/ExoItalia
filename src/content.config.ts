@@ -83,6 +83,10 @@ const sedi = defineCollection({
     claim: z.string().max(80, "Il claim deve stare entro 80 caratteri"),
     sommario: z.string(),
     email: z.email().nullable(),
+    // Presente solo per sedi gestite come siti indipendenti (es. Molise):
+    // la scheda esiste ma rimanda al sito esterno invece di avere una
+    // pagina interna.
+    esterno: z.url().optional(),
     copertina: z.string().optional(),
     copertinaAlt: z.string().optional(),
     referenti: z
