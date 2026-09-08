@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ESEMPIO.exoitalia.it/sitemap-index.xml

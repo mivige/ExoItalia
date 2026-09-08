@@ -1,0 +1,29 @@
+# Dati globali del sito, validati da src/content.config.ts.
+# Cambiare qui il dominio quando sarà definitivo (e allinearlo a "site" in astro.config.mjs).
+# Struttura a mappa con una sola chiave "site": è così che la collection file() la legge.
+site:
+  nome: "Exo Italia"
+  dominio: "https://ESEMPIO.exoitalia.it" # TODO: da confermare — dominio definitivo non ancora deciso
+  payoff: "L'innovazione contro l'esodo"
+
+  sedeLegale:
+    indirizzo: "Via Francesco Caffi, 42"
+    cap: "04100"
+    citta: "Latina"
+    provincia: "LT"
+
+  contatti:
+    email: "info@exoitalia.it"
+    telefono: "+39 380 383 7273"
+
+  # codiceFiscale: TODO — da confermare con chi segue l'amministrazione dell'associazione.
+  # Il brief riporta solo il C.F. di "Associazione Giovanile Exo Latina" (91170700594),
+  # legato allo specifico contributo Vitamina G: non è detto sia lo stesso C.F. nazionale.
+  codiceFiscale: null
+
+  social:
+    instagram: "https://www.instagram.com/exo_italia_official/"
+    linkedin: "https://www.linkedin.com/company/exoitalia"
+
+  privacyUrl: "https://www.iubenda.com/privacy-policy/11896394"
+  cookieUrl: "https://www.iubenda.com/privacy-policy/11896394/cookie-policy"

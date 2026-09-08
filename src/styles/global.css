@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@import "@fontsource-variable/bricolage-grotesque";
+@import "@fontsource/atkinson-hyperlegible/400.css";
+@import "@fontsource/atkinson-hyperlegible/400-italic.css";
+@import "@fontsource/atkinson-hyperlegible/700.css";
+
+/*
+  Token di base (colori, font) definiti qui. La scala tipografica e gli
+  spaziamenti verranno completati in fase di design-plan (M1, docs/design-plan.md)
+  prima di costruire i componenti.
+*/
+@theme {
+  --color-verde: #0e3b31;
+  --color-carta: #fbfaf7;
+  --color-segnale: #86bd60;
+  --color-pietra: #c9c3b6;
+  --color-nebbia: #eeebe4;
+
+  --font-titoli: "Bricolage Grotesque Variable", sans-serif;
+  --font-testo: "Atkinson Hyperlegible", sans-serif;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--color-carta);
+    color: var(--color-verde);
+    font-family: var(--font-testo);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-titoli);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-segnale);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
