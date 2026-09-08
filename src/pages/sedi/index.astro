@@ -28,7 +28,7 @@ const sedi = (await getCollection("sedi")).sort((a, b) => a.data.ordine - b.data
     <section>
       <div class="mx-auto max-w-page px-6 py-16 md:py-24">
         <div class="grid gap-6 md:grid-cols-2">
-          {sedi.map((sede) => <SedeCard sede={sede} />)}
+          {sedi.map((sede) => <SedeCard sede={sede} headingLevel="h2" />)}
         </div>
       </div>
     </section>

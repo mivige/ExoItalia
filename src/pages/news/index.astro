@@ -36,7 +36,7 @@ const news = (await getCollection("news", (entry) => !entry.data.bozza)).sort(
           news.length > 0 ? (
             <div>{news.map((voce) => <NewsCard news={voce} />)}</div>
           ) : (
-            <p class="max-w-prose text-body-lg text-verde/70">
+            <p class="max-w-prose text-body-lg text-verde/75">
               Stiamo preparando i prossimi appuntamenti.
             </p>
           )

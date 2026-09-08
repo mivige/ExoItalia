@@ -28,12 +28,12 @@ const isActive = (href: string) =>
     <input type="checkbox" id="menu-toggle" class="peer sr-only" />
     <label
       for="menu-toggle"
-      class="ml-auto grid w-11 cursor-pointer list-none gap-1.5 rounded-card p-2 md:hidden"
-      aria-label="Apri il menu"
+      class="ml-auto grid h-11 w-11 cursor-pointer list-none content-center justify-items-center gap-1.5 rounded-card p-2 peer-focus-visible:outline peer-focus-visible:outline-3 peer-focus-visible:outline-verde peer-focus-visible:outline-offset-2 md:hidden"
     >
-      <span class="block h-0.5 w-6 bg-verde"></span>
-      <span class="block h-0.5 w-6 bg-verde"></span>
-      <span class="block h-0.5 w-6 bg-verde"></span>
+      <span class="sr-only">Apri il menu</span>
+      <span class="block h-0.5 w-6 bg-verde" aria-hidden="true"></span>
+      <span class="block h-0.5 w-6 bg-verde" aria-hidden="true"></span>
+      <span class="block h-0.5 w-6 bg-verde" aria-hidden="true"></span>
     </label>
 
     <nav aria-label="Principale" class="hidden w-full peer-checked:block md:block md:w-auto">

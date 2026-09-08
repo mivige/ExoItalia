@@ -4,10 +4,12 @@ import Placeholder from "./Placeholder.astro";
 
 interface Props {
   sede: CollectionEntry<"sedi">;
+  headingLevel?: "h2" | "h3";
 }
 
-const { sede } = Astro.props;
+const { sede, headingLevel = "h3" } = Astro.props;
 const { nome, citta, claim, sommario, stato, copertina, copertinaAlt } = sede.data;
+const Heading = headingLevel;
 ---
 
 <a
@@ -31,8 +33,8 @@ const { nome, citta, claim, sommario, stato, copertina, copertinaAlt } = sede.da
         </span>
       )
     }
-    <h3 class="text-h3 font-titoli font-semibold text-verde">{nome}</h3>
-    <p class="text-small text-verde/70">{citta}</p>
+    <Heading class="text-h3 font-titoli font-semibold text-verde">{nome}</Heading>
+    <p class="text-small text-verde/75">{citta}</p>
     <p class="text-body-lg italic text-verde/80">{claim}</p>
     <p class="text-body">{sommario}</p>
   </div>

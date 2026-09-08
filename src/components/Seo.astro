@@ -7,7 +7,7 @@ interface Props {
   ogImage?: string;
 }
 
-const { title, description, ogImage = "/images/og-default.jpg" } = Astro.props;
+const { title, description, ogImage = "/images/og-default.png" } = Astro.props;
 
 const site = (await getEntry("site", "site"))!.data;
 const canonical = new URL(Astro.url.pathname, site.dominio).toString();
@@ -21,6 +21,7 @@ const ogImageUrl = new URL(ogImage, site.dominio).toString();
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImageUrl} />
+<meta property="og:url" content={canonical} />
 <meta property="og:locale" content="it_IT" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
