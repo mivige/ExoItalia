@@ -1,0 +1,151 @@
+---
+import { getCollection, getEntry, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import Placeholder from "../../components/Placeholder.astro";
+
+export async function getStaticPaths() {
+  const sedi = await getCollection("sedi");
+  return sedi.map((sede) => ({
+    params: { slug: sede.id },
+    props: { sede },
+  }));
+}
+
+const { sede } = Astro.props;
+const {
+  nome,
+  citta,
+  regione,
+  stato,
+  claim,
+  sommario,
+  email,
+  copertina,
+  copertinaAlt,
+  referenti,
+  attivita,
+  social,
+} = sede.data;
+
+const { Content } = await render(sede);
+const site = (await getEntry("site", "site"))!.data;
+const contattoEmail = email ?? site.contatti.email;
+
+const hasSidebar = Boolean(referenti?.length || attivita?.length || social?.instagram);
+---
+
+<Base title={`${nome} — Exo Italia`} description={sommario}>
+  <Header />
+  <main>
+    <section class="border-b border-pietra">
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        {
+          stato === "in-avvio" && (
+            <span class="mb-4 inline-flex w-fit items-center rounded-card bg-verde px-2.5 py-1 text-small font-medium text-segnale">
+              In avvio
+            </span>
+          )
+        }
+        <h1 class="text-h1 font-titoli font-semibold text-verde">{nome}</h1>
+        <p class="mt-2 text-body text-verde/70">{citta === regione ? regione : `${citta}, ${regione}`}</p>
+        <p class="mt-4 max-w-prose text-body-lg italic text-verde/80">{claim}</p>
+        <p class="mt-4 max-w-prose text-body-lg">{sommario}</p>
+      </div>
+    </section>
+
+    <section class="border-b border-pietra">
+      <div class="mx-auto max-w-page px-6 py-10">
+        {
+          copertina ? (
+            <img src={copertina} alt={copertinaAlt} class="aspect-[16/9] w-full rounded-card object-cover" />
+          ) : (
+            <Placeholder ratio="16/9" label={`${nome} — copertina`} />
+          )
+        }
+      </div>
+    </section>
+
+    <section>
+      <div class={`mx-auto max-w-page px-6 py-16 md:py-24 md:grid md:gap-12 ${hasSidebar ? "md:grid-cols-[minmax(0,1fr)_18rem]" : ""}`}>
+        <div class="contenuto max-w-prose">
+          <Content />
+        </div>
+
+        {
+          hasSidebar && (
+            <aside class="mt-12 flex flex-col gap-8 md:mt-0">
+              {referenti?.length ? (
+                <div>
+                  <h2 class="text-h3 font-titoli font-semibold text-verde">Referenti</h2>
+                  <ul class="mt-4 flex flex-col gap-4">
+                    {referenti.map((persona) => (
+                      <li>
+                        <p class="font-medium text-verde">{persona.nome}</p>
+                        <p class="text-small text-verde/70">{persona.ruolo}</p>
+                        {persona.linkedin && (
+                          <a
+                            href={persona.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-small underline decoration-verde/40 underline-offset-4 hover:decoration-verde"
+                          >
+                            LinkedIn
+                          </a>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              {attivita?.length ? (
+                <div>
+                  <h2 class="text-h3 font-titoli font-semibold text-verde">Attività locali</h2>
+                  <ul class="mt-4 flex flex-col gap-4">
+                    {attivita.map((voce) => (
+                      <li>
+                        <p class="font-medium text-verde">{voce.titolo}</p>
+                        <p class="text-small">{voce.descrizione}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              {social?.instagram ? (
+                <div>
+                  <h2 class="text-h3 font-titoli font-semibold text-verde">Social</h2>
+                  <a
+                    href={social.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="mt-2 inline-block text-small underline decoration-verde/40 underline-offset-4 hover:decoration-verde"
+                  >
+                    Instagram
+                  </a>
+                </div>
+              ) : null}
+            </aside>
+          )
+        }
+      </div>
+    </section>
+
+    <section class="border-t border-pietra bg-verde text-carta">
+      <div class="mx-auto max-w-page px-6 py-16 text-center md:py-24">
+        <h2 class="font-titoli font-semibold">Vuoi far parte di {nome}?</h2>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href={`mailto:${contattoEmail}`} class="btn bg-carta text-verde hover:bg-carta/90">
+            Scrivi a {contattoEmail}
+          </a>
+          <a href="/contatti" class="btn btn-secondary border-carta text-carta hover:bg-verde/80">
+            Vai ai contatti
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>

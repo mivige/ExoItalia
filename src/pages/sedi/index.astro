@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import SedeCard from "../../components/SedeCard.astro";
+
+const sedi = (await getCollection("sedi")).sort((a, b) => a.data.ordine - b.data.ordine);
+---
+
+<Base
+  title="Sedi — Exo Italia"
+  description="Exo cresce per territori: le sedi locali della rete, ognuna un gruppo autonomo dentro una rete nazionale che condivide metodo, contatti e progetti."
+>
+  <Header />
+  <main>
+    <section class="border-b border-pietra">
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <h1 class="text-h1 font-titoli font-semibold text-verde">Sedi</h1>
+        <p class="mt-6 max-w-prose text-body-lg">
+          Exo cresce per territori. Ogni sede è un gruppo locale autonomo
+          che lavora sul proprio contesto, dentro una rete nazionale che
+          condivide metodo, contatti e progetti.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <div class="grid gap-6 md:grid-cols-2">
+          {sedi.map((sede) => <SedeCard sede={sede} />)}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>

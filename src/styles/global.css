@@ -157,4 +157,50 @@
       animation: none;
     }
   }
+
+  /*
+    Markdown renderizzato (<Content /> delle collection) non passa dalle
+    utility di Tailwind: il preflight azzera i margini di default, quindi
+    serve una spaziatura esplicita qui invece che @tailwindcss/typography
+    (non elencata nello stack, non la aggiungo senza motivo).
+  */
+  .contenuto :where(h2, h3) {
+    margin-top: 2em;
+    margin-bottom: 0.6em;
+  }
+
+  .contenuto :where(h2, h3):first-child {
+    margin-top: 0;
+  }
+
+  .contenuto p {
+    margin-top: 1em;
+  }
+
+  .contenuto :where(ul, ol) {
+    margin-top: 1em;
+    padding-left: 1.25em;
+  }
+
+  .contenuto ul {
+    list-style: disc;
+  }
+
+  .contenuto ol {
+    list-style: decimal;
+  }
+
+  .contenuto li + li {
+    margin-top: 0.4em;
+  }
+
+  .contenuto a {
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--color-verde) 40%, transparent);
+    text-underline-offset: 4px;
+  }
+
+  .contenuto a:hover {
+    text-decoration-color: var(--color-verde);
+  }
 }
