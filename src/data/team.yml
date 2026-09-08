@@ -1,0 +1,53 @@
+# Consiglio direttivo, mostrato in /chi-siamo. Chiave = slug univoco.
+#
+# Per aggiungere/rimuovere una persona, copia questo blocco e cambia i
+# valori (guida completa in CONTENT.md):
+#
+# slug-nome-cognome:
+#   ordine: 6
+#   nome: "Nome Cognome"
+#   ruolo: "Ruolo nel consiglio"
+#   bio: "Percorso in una frase, ruolo attuale in un'altra."
+#   email: "nome.cognome@exoitalia.it"
+#   linkedin: "https://www.linkedin.com/in/slug/" # opzionale
+#   foto: "/images/team/slug-nome-cognome.jpg" # opzionale, altrimenti placeholder
+
+lorenzo-di-filippo:
+  ordine: 1
+  nome: "Lorenzo Di Filippo"
+  ruolo: "Presidente"
+  bio: "Laureato in Physics of Complex Systems al Politecnico di Torino e Senior Allievo del Collegio Carlo Alberto. Risk Analyst nel Global Risk Management di ENEL. Presidente di Exo dal 2020."
+  email: "lorenzo.difilippo@exoitalia.it"
+  linkedin: "https://www.linkedin.com/in/lorenzodifilippo/"
+
+francesco-pappone:
+  ordine: 2
+  nome: "Francesco Pappone"
+  ruolo: "Vice Presidente"
+  bio: "Fisica a Bologna e Ingegneria Matematica al Politecnico di Torino, allievo dell'Alta Scuola Politecnica XVIII. Fellow del Collège des Ingénieurs e CEO di AiSparks."
+  email: "francesco.pappone@exoitalia.it"
+  linkedin: "https://www.linkedin.com/in/francesco-pappone-914b51197/"
+
+federico-califano:
+  ordine: 3
+  nome: "Federico Califano"
+  ruolo: "Segretario"
+  bio: "Ingegneria Meccanica alla Sapienza e Collegio Universitario Lamaro-Pozzani. Dottorando in Meccanica Teorica e Applicata, CTO di AiSparks."
+  email: "federico.califano@exoitalia.it"
+  linkedin: "https://www.linkedin.com/in/federicocalifano/"
+
+carlo-francesco-porcelli:
+  ordine: 4
+  nome: "Carlo Francesco Porcelli"
+  ruolo: "Tesoriere"
+  bio: "Economia e Management alla LUISS Guido Carli. Head of Sales in JELU Consulting; nel 2023 ha cofondato TraynMe a Tallinn."
+  email: "carlofrancesco.porcelli@exoitalia.it"
+  linkedin: "https://www.linkedin.com/in/carlo-francesco-porcelli-b03300188/"
+
+niccolo-di-filippo:
+  ordine: 5
+  nome: "Niccolò Di Filippo"
+  ruolo: "Membro del consiglio direttivo"
+  bio: "Economia e Management alla LUISS Guido Carli. CMO di AiSparks, segue tecnologia e startup."
+  email: "niccolo.difilippo@exoitalia.it"
+  linkedin: "https://www.linkedin.com/in/niccolò-di-filippo-0467901a2/"

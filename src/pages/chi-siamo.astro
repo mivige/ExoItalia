@@ -1,0 +1,82 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import TeamCard from "../components/TeamCard.astro";
+
+const team = (await getCollection("team")).sort((a, b) => a.data.ordine - b.data.ordine);
+---
+
+<Base
+  title="Chi siamo — Exo Italia"
+  description="Exo Italia è un progetto collettivo nato nel 2021 a Latina per unire talenti e risorse e creare prospettive dove l'esodo giovanile le ha ridotte."
+>
+  <Header />
+  <main>
+    <section class="border-b border-pietra">
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <h1 class="text-h1 font-titoli font-semibold text-verde">Chi siamo</h1>
+        <p class="mt-6 max-w-prose text-body-lg">
+          Exo Italia è un progetto collettivo nato nel 2021 a Latina, dalla
+          visione condivisa di persone che si erano trasferite in altre
+          città italiane e straniere per studiare e lavorare. Oggi stiamo
+          costruendo community analoghe in altri territori dove l'esodo
+          giovanile involontario è una sfida quotidiana. L'obiettivo è
+          sempre lo stesso: unire talenti e risorse per creare prospettive
+          dove servono di più.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-pietra">
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <h2 class="font-titoli font-semibold text-verde">Come lavoriamo</h2>
+        <div class="mt-10 grid gap-x-8 gap-y-10 border-t border-pietra pt-10 md:grid-cols-3">
+          <div class="md:border-r md:border-pietra md:pr-8">
+            <h3 class="font-titoli font-semibold text-verde">Collaborazioni</h3>
+            <p class="mt-3 text-body">
+              Costruiamo alleanze con no-profit e aziende che condividono i
+              nostri valori.
+            </p>
+          </div>
+          <div class="md:border-r md:border-pietra md:pr-8">
+            <h3 class="font-titoli font-semibold text-verde">Competenze diverse</h3>
+            <p class="mt-3 text-body">
+              Il nostro team mette insieme percorsi complementari: è così
+              che affrontiamo ogni problema da più angoli.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-titoli font-semibold text-verde">Responsabilità</h3>
+            <p class="mt-3 text-body">
+              Misuriamo l'effetto di quello che facciamo sulle persone e sui
+              territori, e lo rendiamo pubblico.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-pietra bg-nebbia">
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <h2 class="font-titoli font-semibold text-verde">La nostra missione</h2>
+        <p class="mt-6 max-w-prose text-body-lg">
+          Creare opportunità dove l'esodo giovanile le ha ridotte. Lo
+          facciamo con progetti innovativi e sostenibili, insieme a chi
+          quei territori li vive.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <h2 class="font-titoli font-semibold text-verde">Consiglio direttivo</h2>
+        <ul class="mt-10">
+          {team.map((persona) => <TeamCard persona={persona} />)}
+        </ul>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>

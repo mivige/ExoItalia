@@ -53,6 +53,20 @@ const stats = defineCollection({
   }),
 });
 
+// src/data/team.yml — mappa slug -> membro del consiglio direttivo.
+const team = defineCollection({
+  loader: file("src/data/team.yml"),
+  schema: z.object({
+    ordine: z.number(),
+    nome: z.string(),
+    ruolo: z.string(),
+    bio: z.string(),
+    email: z.email(),
+    linkedin: z.url().optional(),
+    foto: z.string().optional(),
+  }),
+});
+
 // src/content/sedi/{slug}.md — una sede locale per file.
 const sedi = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "src/content/sedi" }),
@@ -99,4 +113,4 @@ const sedi = defineCollection({
   }),
 });
 
-export const collections = { site, partners, stats, sedi };
+export const collections = { site, partners, stats, team, sedi };

@@ -1,0 +1,48 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Placeholder from "./Placeholder.astro";
+
+interface Props {
+  persona: CollectionEntry<"team">;
+}
+
+const { persona } = Astro.props;
+const { nome, ruolo, bio, email, linkedin, foto } = persona.data;
+---
+
+<li class="flex flex-col gap-4 border-t border-pietra py-6 first:border-t-0 sm:flex-row sm:items-start">
+  <div class="w-24 shrink-0 sm:w-28">
+    {
+      foto ? (
+        <img src={foto} alt={nome} class="aspect-square w-full rounded-card object-cover" />
+      ) : (
+        <Placeholder ratio="1/1" label="Foto" />
+      )
+    }
+  </div>
+  <div>
+    <h3 class="text-h3 font-titoli font-semibold text-verde">{nome}</h3>
+    <p class="text-small font-medium text-verde/70">{ruolo}</p>
+    <p class="mt-2 max-w-prose text-body">{bio}</p>
+    <div class="mt-2 flex gap-4 text-small">
+      <a
+        href={`mailto:${email}`}
+        class="underline decoration-verde/40 underline-offset-4 hover:decoration-verde"
+      >
+        Email
+      </a>
+      {
+        linkedin && (
+          <a
+            href={linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="underline decoration-verde/40 underline-offset-4 hover:decoration-verde"
+          >
+            LinkedIn
+          </a>
+        )
+      }
+    </div>
+  </div>
+</li>
