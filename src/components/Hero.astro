@@ -1,5 +1,6 @@
 ---
 import { getEntry } from "astro:content";
+import { withBase } from "../lib/paths";
 
 const site = (await getEntry("site", "site"))!.data;
 const arco = "M 40 232 A 130 130 0 1 1 232 40";
@@ -29,8 +30,8 @@ const arco = "M 40 232 A 130 130 0 1 1 232 40";
         territori che invitano a restare.
       </p>
       <div class="mt-8 flex flex-wrap gap-4">
-        <a href="/contatti" class="btn btn-primary">Entra nella community</a>
-        <a href="/chi-siamo" class="btn btn-secondary">Scopri chi siamo</a>
+        <a href={withBase("/contatti")} class="btn btn-primary">Entra nella community</a>
+        <a href={withBase("/chi-siamo")} class="btn btn-secondary">Scopri chi siamo</a>
       </div>
     </div>
   </div>

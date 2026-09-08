@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { withBase } from "../lib/paths";
 
 const partners = (await getCollection("partners")).sort((a, b) =>
   a.data.nome.localeCompare(b.data.nome),
@@ -19,7 +20,7 @@ const partners = (await getCollection("partners")).sort((a, b) =>
         >
           {partner.data.logo ? (
             <img
-              src={partner.data.logo}
+              src={withBase(partner.data.logo)}
               alt={partner.data.nome}
               class="max-h-10 w-auto grayscale transition-[filter] duration-200 hover:grayscale-0"
             />

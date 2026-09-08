@@ -5,6 +5,7 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import Placeholder from "../../components/Placeholder.astro";
 import JsonLd from "../../components/JsonLd.astro";
+import { withBase } from "../../lib/paths";
 
 export async function getStaticPaths() {
   const sedi = await getCollection("sedi");
@@ -71,7 +72,7 @@ const breadcrumbSchema = {
       <div class="mx-auto max-w-page px-6 py-10">
         {
           copertina ? (
-            <img src={copertina} alt={copertinaAlt} class="aspect-[16/9] w-full rounded-card object-cover" />
+            <img src={withBase(copertina)} alt={copertinaAlt} class="aspect-[16/9] w-full rounded-card object-cover" />
           ) : (
             <Placeholder ratio="16/9" label={`${nome} — copertina`} />
           )
@@ -152,7 +153,7 @@ const breadcrumbSchema = {
           <a href={`mailto:${contattoEmail}`} class="btn bg-carta text-verde hover:bg-carta/90">
             Scrivi a {contattoEmail}
           </a>
-          <a href="/contatti" class="btn btn-secondary border-carta text-carta hover:bg-verde/80">
+          <a href={withBase("/contatti")} class="btn btn-secondary border-carta text-carta hover:bg-verde/80">
             Vai ai contatti
           </a>
         </div>

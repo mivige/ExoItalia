@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import Placeholder from "./Placeholder.astro";
+import { withBase } from "../lib/paths";
 
 interface Props {
   news: CollectionEntry<"news">;
@@ -16,13 +17,13 @@ const dataFormattata = new Intl.DateTimeFormat("it-IT", {
 ---
 
 <a
-  href={`/news/${news.id}`}
+  href={withBase(`/news/${news.id}`)}
   class="grid gap-4 border-t border-pietra py-6 first:border-t-0 sm:grid-cols-[10rem_1fr] sm:items-center"
 >
   <div class="bg-nebbia">
     {
       copertina ? (
-        <img src={copertina} alt={copertinaAlt} class="aspect-[4/3] w-full rounded-card object-cover" />
+        <img src={withBase(copertina)} alt={copertinaAlt} class="aspect-[4/3] w-full rounded-card object-cover" />
       ) : (
         <Placeholder ratio="4/3" label={titolo} />
       )

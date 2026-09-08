@@ -7,6 +7,7 @@ import Hero from "../components/Hero.astro";
 import SedeCard from "../components/SedeCard.astro";
 import PartnerGrid from "../components/PartnerGrid.astro";
 import JsonLd from "../components/JsonLd.astro";
+import { withBase } from "../lib/paths";
 
 const site = (await getEntry("site", "site"))!.data;
 const stats = (await getCollection("stats")).sort((a, b) => a.data.ordine - b.data.ordine);
@@ -68,7 +69,7 @@ const ngoSchema = {
             </p>
           </div>
         </div>
-        <a href="/attivita" class="btn btn-secondary mt-10">Scopri le attività</a>
+        <a href={withBase("/attivita")} class="btn btn-secondary mt-10">Scopri le attività</a>
       </div>
     </section>
 
@@ -91,7 +92,7 @@ const ngoSchema = {
       <div class="mx-auto max-w-page px-6 py-16 md:py-24">
         <div class="flex flex-wrap items-end justify-between gap-4">
           <h2 class="font-titoli font-semibold text-verde">Le sedi</h2>
-          <a href="/sedi" class="btn btn-secondary">Tutte le sedi</a>
+          <a href={withBase("/sedi")} class="btn btn-secondary">Tutte le sedi</a>
         </div>
         <div class="mt-10 grid gap-6 md:grid-cols-2">
           {sedi.map((sede) => <SedeCard sede={sede} />)}
@@ -115,7 +116,7 @@ const ngoSchema = {
           Entra nella community, proponi una collaborazione, oppure aiutaci
           a portare Exo dove ancora non c'è.
         </p>
-        <a href="/contatti" class="btn mt-8 bg-carta text-verde hover:bg-carta/90">Entra nella community</a>
+        <a href={withBase("/contatti")} class="btn mt-8 bg-carta text-verde hover:bg-carta/90">Entra nella community</a>
       </div>
     </section>
   </main>

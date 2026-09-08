@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import Placeholder from "./Placeholder.astro";
+import { withBase } from "../lib/paths";
 
 interface Props {
   sede: CollectionEntry<"sedi">;
@@ -13,13 +14,13 @@ const Heading = headingLevel;
 ---
 
 <a
-  href={`/sedi/${sede.id}`}
+  href={withBase(`/sedi/${sede.id}`)}
   class="grid overflow-hidden rounded-card border border-pietra sm:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]"
 >
   <div class="bg-nebbia">
     {
       copertina ? (
-        <img src={copertina} alt={copertinaAlt} class="h-full w-full object-cover" />
+        <img src={withBase(copertina)} alt={copertinaAlt} class="h-full w-full object-cover" />
       ) : (
         <Placeholder ratio="4/3" label={`${nome} — copertina`} />
       )

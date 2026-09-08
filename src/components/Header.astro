@@ -1,5 +1,6 @@
 ---
 import { getCollection, getEntry } from "astro:content";
+import { withBase } from "../lib/paths";
 
 const site = (await getEntry("site", "site"))!.data;
 const haNews = (await getCollection("news", (entry) => !entry.data.bozza)).length > 0;
@@ -14,14 +15,13 @@ const voci = [
 ];
 
 const path = Astro.url.pathname;
-const isActive = (href: string) =>
-  href === "/" ? path === "/" : path.startsWith(href);
+const isActive = (href: string) => path.startsWith(withBase(href));
 ---
 
 <header class="border-b border-pietra bg-carta">
   <div class="mx-auto flex max-w-page flex-wrap items-center justify-between gap-x-4 px-6 py-4">
-    <a href="/" class="flex items-center gap-3">
-      <img src="/images/logo_exo.png" alt={site.nome} class="h-10 w-10" width="40" height="40" />
+    <a href={withBase("/")} class="flex items-center gap-3">
+      <img src={withBase("/images/logo_exo.png")} alt={site.nome} class="h-10 w-10" width="40" height="40" />
       <span class="text-h3 font-titoli font-semibold">{site.nome}</span>
     </a>
 
@@ -42,7 +42,7 @@ const isActive = (href: string) =>
           voci.map((voce) => (
             <li>
               <a
-                href={voce.href}
+                href={withBase(voce.href)}
                 aria-current={isActive(voce.href) ? "page" : undefined}
                 class="inline-block min-h-11 py-2 text-body font-medium text-verde underline decoration-transparent decoration-2 underline-offset-4 hover:decoration-verde aria-[current=page]:decoration-verde"
               >

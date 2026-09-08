@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { withBase } from "../lib/paths";
 ---
 
 <Base
@@ -42,7 +43,7 @@ import Footer from "../components/Footer.astro";
         </p>
         <p class="mt-4 text-body">
           <strong>Come partecipare:</strong>{" "}
-          <a href="/contatti" class="underline decoration-verde/40 underline-offset-4 hover:decoration-verde">
+          <a href={withBase("/contatti")} class="underline decoration-verde/40 underline-offset-4 hover:decoration-verde">
             scrivici
           </a>{" "}
           per entrare nella rete o proporre una collaborazione.
@@ -69,7 +70,7 @@ import Footer from "../components/Footer.astro";
         <p class="mt-4 text-body">
           <strong>Come partecipare:</strong> se sei un istituto scolastico o
           un docente interessato,{" "}
-          <a href="/contatti" class="underline decoration-verde/40 underline-offset-4 hover:decoration-verde">
+          <a href={withBase("/contatti")} class="underline decoration-verde/40 underline-offset-4 hover:decoration-verde">
             contattaci
           </a>.
         </p>
@@ -95,7 +96,7 @@ import Footer from "../components/Footer.astro";
         <p class="mt-4 text-body">
           <strong>Come partecipare:</strong> segui i canali social di Exo per
           le prossime date, o{" "}
-          <a href="/contatti" class="underline decoration-verde/40 underline-offset-4 hover:decoration-verde">
+          <a href={withBase("/contatti")} class="underline decoration-verde/40 underline-offset-4 hover:decoration-verde">
             scrivici
           </a>.
         </p>

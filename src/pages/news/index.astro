@@ -4,6 +4,7 @@ import Base from "../../layouts/Base.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import NewsCard from "../../components/NewsCard.astro";
+import { withBase } from "../../lib/paths";
 
 const news = (await getCollection("news", (entry) => !entry.data.bozza)).sort(
   (a, b) => b.data.data.valueOf() - a.data.data.valueOf(),
@@ -21,7 +22,7 @@ const news = (await getCollection("news", (entry) => !entry.data.bozza)).sort(
         <div class="flex flex-wrap items-end justify-between gap-4">
           <h1 class="text-h1 font-titoli font-semibold text-verde">News</h1>
           <a
-            href="/news/rss.xml"
+            href={withBase("/news/rss.xml")}
             class="text-small underline decoration-verde/40 underline-offset-4 hover:decoration-verde"
           >
             RSS
