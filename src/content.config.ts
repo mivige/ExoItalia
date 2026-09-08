@@ -113,4 +113,23 @@ const sedi = defineCollection({
   }),
 });
 
-export const collections = { site, partners, stats, team, sedi };
+// src/content/news/{YYYY-MM-DD}-{slug}.md — una news per file.
+const news = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "src/content/news" }),
+  schema: z
+    .object({
+      titolo: z.string(),
+      data: z.coerce.date(),
+      sommario: z.string().max(200, "Il sommario deve stare entro 200 caratteri"),
+      copertina: z.string().optional(),
+      copertinaAlt: z.string().optional(),
+      sede: z.enum(["latina", "molise", "nazionale"]),
+      bozza: z.boolean().default(false),
+    })
+    .refine((n) => !n.copertina || !!n.copertinaAlt, {
+      message: "copertinaAlt è obbligatorio quando è presente copertina",
+      path: ["copertinaAlt"],
+    }),
+});
+
+export const collections = { site, partners, stats, team, sedi, news };

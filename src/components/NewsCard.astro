@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Placeholder from "./Placeholder.astro";
+
+interface Props {
+  news: CollectionEntry<"news">;
+}
+
+const { news } = Astro.props;
+const { titolo, data, sommario, copertina, copertinaAlt } = news.data;
+const dataFormattata = new Intl.DateTimeFormat("it-IT", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+}).format(data);
+---
+
+<a
+  href={`/news/${news.id}`}
+  class="grid gap-4 border-t border-pietra py-6 first:border-t-0 sm:grid-cols-[10rem_1fr] sm:items-center"
+>
+  <div class="bg-nebbia">
+    {
+      copertina ? (
+        <img src={copertina} alt={copertinaAlt} class="aspect-[4/3] w-full rounded-card object-cover" />
+      ) : (
+        <Placeholder ratio="4/3" label={titolo} />
+      )
+    }
+  </div>
+  <div>
+    <p class="text-small text-verde/60">{dataFormattata}</p>
+    <h3 class="mt-1 text-h3 font-titoli font-semibold text-verde">{titolo}</h3>
+    <p class="mt-2 text-body">{sommario}</p>
+  </div>
+</a>

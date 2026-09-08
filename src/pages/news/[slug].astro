@@ -1,0 +1,69 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import Placeholder from "../../components/Placeholder.astro";
+import JsonLd from "../../components/JsonLd.astro";
+
+export async function getStaticPaths() {
+  const news = await getCollection("news", (entry) => !entry.data.bozza);
+  return news.map((voce) => ({
+    params: { slug: voce.id },
+    props: { voce },
+  }));
+}
+
+const { voce } = Astro.props;
+const { titolo, data, sommario, copertina, copertinaAlt } = voce.data;
+const { Content } = await render(voce);
+
+const dataFormattata = new Intl.DateTimeFormat("it-IT", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+}).format(data);
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  headline: titolo,
+  datePublished: data.toISOString(),
+  description: sommario,
+};
+---
+
+<Base title={`${titolo} — Exo Italia`} description={sommario}>
+  <JsonLd data={articleSchema} />
+  <Header />
+  <main>
+    <section class="border-b border-pietra">
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <p class="text-small text-verde/60">{dataFormattata}</p>
+        <h1 class="mt-2 text-h1 font-titoli font-semibold text-verde">{titolo}</h1>
+        <p class="mt-4 max-w-prose text-body-lg">{sommario}</p>
+      </div>
+    </section>
+
+    <section class="border-b border-pietra">
+      <div class="mx-auto max-w-page px-6 py-10">
+        {
+          copertina ? (
+            <img src={copertina} alt={copertinaAlt} class="aspect-[16/9] w-full rounded-card object-cover" />
+          ) : (
+            <Placeholder ratio="16/9" label={titolo} />
+          )
+        }
+      </div>
+    </section>
+
+    <section>
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <div class="contenuto max-w-prose">
+          <Content />
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>

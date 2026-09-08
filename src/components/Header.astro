@@ -1,12 +1,14 @@
 ---
-import { getEntry } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 
 const site = (await getEntry("site", "site"))!.data;
+const haNews = (await getCollection("news", (entry) => !entry.data.bozza)).length > 0;
 
 const voci = [
   { href: "/chi-siamo", etichetta: "Chi siamo" },
   { href: "/attivita", etichetta: "Attività" },
   { href: "/sedi", etichetta: "Sedi" },
+  ...(haNews ? [{ href: "/news", etichetta: "News" }] : []),
   { href: "/trasparenza", etichetta: "Trasparenza" },
   { href: "/contatti", etichetta: "Contatti" },
 ];
@@ -23,33 +25,33 @@ const isActive = (href: string) =>
       <span class="text-h3 font-titoli font-semibold">{site.nome}</span>
     </a>
 
-    <details class="w-full md:contents md:w-auto">
-      <summary
-        class="ml-auto grid w-11 cursor-pointer list-none gap-1.5 rounded-card p-2 md:hidden"
-        aria-label="Apri il menu"
-      >
-        <span class="block h-0.5 w-6 bg-verde"></span>
-        <span class="block h-0.5 w-6 bg-verde"></span>
-        <span class="block h-0.5 w-6 bg-verde"></span>
-      </summary>
+    <input type="checkbox" id="menu-toggle" class="peer sr-only" />
+    <label
+      for="menu-toggle"
+      class="ml-auto grid w-11 cursor-pointer list-none gap-1.5 rounded-card p-2 md:hidden"
+      aria-label="Apri il menu"
+    >
+      <span class="block h-0.5 w-6 bg-verde"></span>
+      <span class="block h-0.5 w-6 bg-verde"></span>
+      <span class="block h-0.5 w-6 bg-verde"></span>
+    </label>
 
-      <nav aria-label="Principale" class="md:contents">
-        <ul class="mt-4 flex flex-col gap-4 md:mt-0 md:flex-row md:items-center md:gap-8">
-          {
-            voci.map((voce) => (
-              <li>
-                <a
-                  href={voce.href}
-                  aria-current={isActive(voce.href) ? "page" : undefined}
-                  class="inline-block min-h-11 py-2 text-body font-medium text-verde underline decoration-transparent decoration-2 underline-offset-4 hover:decoration-verde aria-[current=page]:decoration-verde"
-                >
-                  {voce.etichetta}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </nav>
-    </details>
+    <nav aria-label="Principale" class="hidden w-full peer-checked:block md:block md:w-auto">
+      <ul class="mt-4 flex flex-col gap-4 md:mt-0 md:flex-row md:items-center md:gap-8">
+        {
+          voci.map((voce) => (
+            <li>
+              <a
+                href={voce.href}
+                aria-current={isActive(voce.href) ? "page" : undefined}
+                class="inline-block min-h-11 py-2 text-body font-medium text-verde underline decoration-transparent decoration-2 underline-offset-4 hover:decoration-verde aria-[current=page]:decoration-verde"
+              >
+                {voce.etichetta}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
   </div>
 </header>

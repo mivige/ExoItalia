@@ -1,0 +1,87 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+// TODO: far verificare i contenuti obbligatori di questa pagina a chi
+// segue l'amministrazione dell'associazione — dipendono dalla forma
+// giuridica (L. 124/2017, pubblicità di contributi pubblici > 10.000 €).
+
+const contributi = [
+  {
+    anno: null as string | null, // TODO: da confermare
+    ente: "Regione Lazio",
+    importo: "21.200 €",
+    progetto:
+      "Latina Innovation Community — bando Vitamina G, programma GenerAzioniGiovani.it (Politiche Giovanili della Regione Lazio, con il sostegno del Dipartimento per la Gioventù), a favore di Associazione Giovanile Exo Latina (C.F. 91170700594), erogato da Regione Lazio (C.F. 80143490581).",
+  },
+];
+---
+
+<Base
+  title="Trasparenza — Exo Italia"
+  description="Statuto, bilanci e contributi pubblici ricevuti da Exo Italia, in linea con gli obblighi di pubblicità della L. 124/2017."
+>
+  <Header />
+  <main>
+    <section class="border-b border-pietra">
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <h1 class="text-h1 font-titoli font-semibold text-verde">Trasparenza</h1>
+        <p class="mt-6 max-w-prose text-body-lg">
+          Exo Italia riceve anche contributi pubblici. La legge 124/2017
+          impone di darne pubblicità quando superano i 10.000 €: questa
+          pagina raccoglie statuto, bilanci e i contributi ricevuti.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-pietra">
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <h2 class="font-titoli font-semibold text-verde">Statuto</h2>
+        <p class="mt-4 max-w-prose text-body text-verde/70">
+          Documento in fase di pubblicazione.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-pietra bg-nebbia">
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <h2 class="font-titoli font-semibold text-verde">Bilanci</h2>
+        <p class="mt-4 max-w-prose text-body text-verde/70">
+          Documenti in fase di pubblicazione.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <h2 class="font-titoli font-semibold text-verde">Contributi pubblici ricevuti</h2>
+        <div class="mt-8 overflow-x-auto">
+          <table class="w-full min-w-[40rem] border-collapse text-left text-body">
+            <thead>
+              <tr class="border-b border-pietra text-small text-verde/60">
+                <th class="py-2 pr-4 font-medium">Anno</th>
+                <th class="py-2 pr-4 font-medium">Ente</th>
+                <th class="py-2 pr-4 font-medium">Importo</th>
+                <th class="py-2 font-medium">Progetto</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                contributi.map((riga) => (
+                  <tr class="border-b border-pietra align-top">
+                    <td class="py-3 pr-4">{riga.anno ?? "TODO"}</td>
+                    <td class="py-3 pr-4">{riga.ente}</td>
+                    <td class="py-3 pr-4">{riga.importo}</td>
+                    <td class="py-3 max-w-prose">{riga.progetto}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>

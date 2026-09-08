@@ -1,0 +1,83 @@
+---
+import { getEntry } from "astro:content";
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const site = (await getEntry("site", "site"))!.data;
+const indirizzo = `${site.sedeLegale.indirizzo}, ${site.sedeLegale.cap} ${site.sedeLegale.citta} (${site.sedeLegale.provincia})`;
+
+const motivi = [
+  "entrare nella community",
+  "proporre una collaborazione",
+  "scuole e docenti",
+  "stampa",
+];
+---
+
+<Base
+  title="Contatti — Exo Italia"
+  description="Scrivi a Exo Italia: email, telefono, sede legale e social. Rispondiamo a chi vuole entrare nella community, collaborare, o parlarne come scuola o come stampa."
+>
+  <Header />
+  <main>
+    <section class="border-b border-pietra">
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <h1 class="text-h1 font-titoli font-semibold text-verde">Contatti</h1>
+        <p class="mt-6 max-w-prose text-body-lg">
+          Scrivici se vuoi {motivi.slice(0, -1).join(", ")} o {motivi.at(-1)}: rispondiamo a tutti.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <div class="grid gap-10 md:grid-cols-2">
+          <div>
+            <h2 class="font-titoli font-semibold text-verde">Email</h2>
+            <a
+              href={`mailto:${site.contatti.email}`}
+              class="mt-2 inline-block text-body-lg underline decoration-verde/40 underline-offset-4 hover:decoration-verde"
+            >
+              {site.contatti.email}
+            </a>
+
+            <h2 class="mt-10 font-titoli font-semibold text-verde">Telefono</h2>
+            <a
+              href={`tel:${site.contatti.telefono.replace(/\s+/g, "")}`}
+              class="mt-2 inline-block text-body-lg underline decoration-verde/40 underline-offset-4 hover:decoration-verde"
+            >
+              {site.contatti.telefono}
+            </a>
+          </div>
+
+          <div>
+            <h2 class="font-titoli font-semibold text-verde">Sede legale</h2>
+            <p class="mt-2 text-body-lg">{indirizzo}</p>
+
+            <h2 class="mt-10 font-titoli font-semibold text-verde">Social</h2>
+            <div class="mt-2 flex gap-4 text-body-lg">
+              <a
+                href={site.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline decoration-verde/40 underline-offset-4 hover:decoration-verde"
+              >
+                Instagram
+              </a>
+              <a
+                href={site.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline decoration-verde/40 underline-offset-4 hover:decoration-verde"
+              >
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>

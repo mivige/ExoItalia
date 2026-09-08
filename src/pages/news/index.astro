@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import NewsCard from "../../components/NewsCard.astro";
+
+const news = (await getCollection("news", (entry) => !entry.data.bozza)).sort(
+  (a, b) => b.data.data.valueOf() - a.data.data.valueOf(),
+);
+---
+
+<Base
+  title="News — Exo Italia"
+  description="Novità ed eventi di Exo Italia e delle sue sedi locali."
+>
+  <Header />
+  <main>
+    <section class="border-b border-pietra">
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <h1 class="text-h1 font-titoli font-semibold text-verde">News</h1>
+          <a
+            href="/news/rss.xml"
+            class="text-small underline decoration-verde/40 underline-offset-4 hover:decoration-verde"
+          >
+            RSS
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        {
+          news.length > 0 ? (
+            <div>{news.map((voce) => <NewsCard news={voce} />)}</div>
+          ) : (
+            <p class="max-w-prose text-body-lg text-verde/70">
+              Stiamo preparando i prossimi appuntamenti.
+            </p>
+          )
+        }
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
