@@ -1,0 +1,39 @@
+---
+import { getEntry } from "astro:content";
+
+const site = (await getEntry("site", "site"))!.data;
+const anno = new Date().getFullYear();
+const indirizzo = `${site.sedeLegale.indirizzo}, ${site.sedeLegale.cap} ${site.sedeLegale.citta} (${site.sedeLegale.provincia})`;
+---
+
+<footer class="border-t border-pietra bg-verde text-carta">
+  <div class="mx-auto grid max-w-page gap-8 px-6 py-12 md:grid-cols-3">
+    <div class="flex flex-col gap-3">
+      <a href="/" class="flex items-center gap-3">
+        <img src="/images/logo_exo.png" alt={site.nome} class="h-9 w-9" width="36" height="36" />
+        <span class="text-h3 font-titoli font-semibold">{site.nome}</span>
+      </a>
+      <p class="text-small text-carta/80">{indirizzo}</p>
+    </div>
+
+    <div class="flex flex-col gap-2 text-body">
+      <a href={`mailto:${site.contatti.email}`} class="underline decoration-carta/40 underline-offset-4 hover:decoration-carta">
+        {site.contatti.email}
+      </a>
+      <a href={`tel:${site.contatti.telefono.replace(/\s+/g, "")}`} class="underline decoration-carta/40 underline-offset-4 hover:decoration-carta">
+        {site.contatti.telefono}
+      </a>
+      <div class="mt-2 flex gap-4">
+        <a href={site.social.instagram} class="underline decoration-carta/40 underline-offset-4 hover:decoration-carta">Instagram</a>
+        <a href={site.social.linkedin} class="underline decoration-carta/40 underline-offset-4 hover:decoration-carta">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-2 text-small text-carta/80">
+      <a href={site.privacyUrl} class="underline decoration-carta/30 underline-offset-4 hover:decoration-carta">Privacy Policy</a>
+      <a href={site.cookieUrl} class="underline decoration-carta/30 underline-offset-4 hover:decoration-carta">Cookie Policy</a>
+      {site.codiceFiscale && <span>C.F. {site.codiceFiscale}</span>}
+      <span>© {anno} {site.nome}</span>
+    </div>
+  </div>
+</footer>

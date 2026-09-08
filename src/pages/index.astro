@@ -1,12 +1,123 @@
 ---
+import { getCollection, getEntry } from "astro:content";
 import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Hero from "../components/Hero.astro";
+import SedeCard from "../components/SedeCard.astro";
+import PartnerGrid from "../components/PartnerGrid.astro";
+import JsonLd from "../components/JsonLd.astro";
+
+const site = (await getEntry("site", "site"))!.data;
+const stats = (await getCollection("stats")).sort((a, b) => a.data.ordine - b.data.ordine);
+const sedi = (await getCollection("sedi")).sort((a, b) => a.data.ordine - b.data.ordine);
+
+const ngoSchema = {
+  "@context": "https://schema.org",
+  "@type": "NGO",
+  name: site.nome,
+  url: site.dominio,
+  logo: new URL("/images/logo_exo.png", site.dominio).toString(),
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.sedeLegale.indirizzo,
+    postalCode: site.sedeLegale.cap,
+    addressLocality: site.sedeLegale.citta,
+    addressRegion: site.sedeLegale.provincia,
+    addressCountry: "IT",
+  },
+  email: site.contatti.email,
+  telephone: site.contatti.telefono,
+  sameAs: [site.social.instagram, site.social.linkedin],
+};
 ---
 
 <Base
   title="Exo Italia — L'innovazione contro l'esodo giovanile"
   description="Exo Italia è un'associazione no-profit contro l'esodo giovanile involontario: mettiamo in rete talenti per creare opportunità nei territori periferici."
 >
-  <main class="min-h-screen flex items-center justify-center p-8">
-    <h1 class="text-3xl font-bold text-verde">Exo Italia — cantiere aperto</h1>
+  <JsonLd data={ngoSchema} />
+  <Header />
+  <main>
+    <Hero />
+
+    <section class="border-t border-pietra">
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <h2 class="font-titoli font-semibold text-verde">Cosa facciamo</h2>
+        <div class="mt-10 grid gap-x-8 gap-y-10 border-t border-pietra pt-10 md:grid-cols-4">
+          <div class="md:col-span-2 md:border-r md:border-pietra md:pr-8">
+            <h3 class="font-titoli font-semibold text-verde">Exodus Community</h3>
+            <p class="mt-3 text-body">
+              Trasformiamo il brain-drain in brain-gain: mettiamo in rete
+              expat di talento per far crescere le loro terre d'origine.
+            </p>
+          </div>
+          <div class="md:border-r md:border-pietra md:pr-8">
+            <h3 class="font-titoli font-semibold text-verde">Progetti nelle scuole</h3>
+            <p class="mt-3 text-body">
+              Portiamo cultura imprenditoriale tra i banchi, perché la
+              crescita di un territorio nasce dall'istruzione e
+              dall'autoimprenditorialità.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-titoli font-semibold text-verde">Eventi</h3>
+            <p class="mt-3 text-body">
+              Organizziamo occasioni in cui le visioni diventano azione,
+              nelle aree periferiche.
+            </p>
+          </div>
+        </div>
+        <a href="/attivita" class="btn btn-secondary mt-10">Scopri le attività</a>
+      </div>
+    </section>
+
+    <section class="border-t border-pietra bg-nebbia">
+      <div class="mx-auto max-w-page px-6 py-16">
+        <ul class="grid grid-cols-2 divide-x divide-pietra sm:grid-cols-4">
+          {
+            stats.map((stat) => (
+              <li class="flex flex-col items-center gap-1 px-4 text-center">
+                <span class="text-h1 font-titoli font-semibold text-verde">{stat.data.valore}</span>
+                <span class="text-small text-verde/70">{stat.data.etichetta}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section class="border-t border-pietra">
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <h2 class="font-titoli font-semibold text-verde">Le sedi</h2>
+          <a href="/sedi" class="btn btn-secondary">Tutte le sedi</a>
+        </div>
+        <div class="mt-10 grid gap-6 md:grid-cols-2">
+          {sedi.map((sede) => <SedeCard sede={sede} />)}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-pietra">
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <h2 class="font-titoli font-semibold text-verde">Partner e sostenitori</h2>
+        <div class="mt-10">
+          <PartnerGrid />
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-pietra bg-verde text-carta">
+      <div class="mx-auto max-w-page px-6 py-16 text-center md:py-24">
+        <h2 class="font-titoli font-semibold">Vuoi far parte del cambiamento?</h2>
+        <p class="mx-auto mt-4 max-w-prose text-body-lg text-carta/85">
+          Entra nella community, proponi una collaborazione, oppure aiutaci
+          a portare Exo dove ancora non c'è.
+        </p>
+        <a href="/contatti" class="btn mt-8 bg-carta text-verde hover:bg-carta/90">Entra nella community</a>
+      </div>
+    </section>
   </main>
+  <Footer />
 </Base>

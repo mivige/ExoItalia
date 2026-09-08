@@ -1,0 +1,24 @@
+# I numeri della home. Chiave = slug univoco.
+#
+# TODO: valori da far riconfermare al team prima della pubblicazione (nel
+# sito attuale numeri ed etichette risultano disallineati).
+
+fondazione:
+  ordine: 1
+  valore: "2021"
+  etichetta: "Anno di fondazione"
+
+membri:
+  ordine: 2
+  valore: "150"
+  etichetta: "Membri della community"
+
+volontari:
+  ordine: 3
+  valore: "30"
+  etichetta: "Volontari"
+
+studenti:
+  ordine: 4
+  valore: "600"
+  etichetta: "Studenti raggiunti"

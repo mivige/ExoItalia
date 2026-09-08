@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+
+const partners = (await getCollection("partners")).sort((a, b) =>
+  a.data.nome.localeCompare(b.data.nome),
+);
+---
+
+<ul class="grid grid-cols-2 gap-px bg-pietra sm:grid-cols-3">
+  {
+    partners.map((partner) => (
+      <li class="bg-nebbia">
+        <a
+          href={partner.data.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex h-full items-center justify-center p-6"
+          aria-label={`${partner.data.nome} (apre in una nuova scheda)`}
+        >
+          {partner.data.logo ? (
+            <img
+              src={partner.data.logo}
+              alt={partner.data.nome}
+              class="max-h-10 w-auto grayscale transition-[filter] duration-200 hover:grayscale-0"
+            />
+          ) : (
+            <span class="text-center text-small text-verde/60">{partner.data.nome}</span>
+          )}
+        </a>
+      </li>
+    ))
+  }
+</ul>

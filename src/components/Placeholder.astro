@@ -1,0 +1,15 @@
+---
+interface Props {
+  ratio: string; // es. "3/2", "1/1", "16/9"
+  label: string;
+}
+
+const { ratio, label } = Astro.props;
+---
+
+<div
+  class="flex items-center justify-center border border-dashed border-pietra bg-nebbia p-4 text-center"
+  style={`aspect-ratio: ${ratio};`}
+>
+  <span class="text-small text-verde/60">{label}</span>
+</div>

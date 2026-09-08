@@ -6,9 +6,9 @@
 @import "@fontsource/atkinson-hyperlegible/700.css";
 
 /*
-  Token di base (colori, font) definiti qui. La scala tipografica e gli
-  spaziamenti verranno completati in fase di design-plan (M1, docs/design-plan.md)
-  prima di costruire i componenti.
+  Token dichiarati in docs/design-plan.md (M1). Scala tipografica fluida via
+  clamp(): estremi mobile/desktop coincidono con la tabella del design-plan,
+  interpolati tra 360px e 1280px di viewport.
 */
 @theme {
   --color-verde: #0e3b31;
@@ -19,6 +19,26 @@
 
   --font-titoli: "Bricolage Grotesque Variable", sans-serif;
   --font-testo: "Atkinson Hyperlegible", sans-serif;
+
+  --text-display: clamp(2.5rem, 1.717rem + 3.478vw, 4.5rem);
+  --text-display--line-height: 1.05;
+  --text-h1: clamp(2rem, 1.707rem + 1.304vw, 2.75rem);
+  --text-h1--line-height: 1.15;
+  --text-h2: clamp(1.5rem, 1.304rem + 0.87vw, 2rem);
+  --text-h2--line-height: 1.2;
+  --text-h3: clamp(1.25rem, 1.201rem + 0.217vw, 1.375rem);
+  --text-h3--line-height: 1.3;
+  --text-body-lg: clamp(1.125rem, 1.076rem + 0.217vw, 1.25rem);
+  --text-body-lg--line-height: 1.6;
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.5;
+
+  --container-page: 75rem;
+  --container-prose: 65ch;
+
+  --radius-card: 0.5rem;
 }
 
 @layer base {
@@ -30,15 +50,44 @@
     background-color: var(--color-carta);
     color: var(--color-verde);
     font-family: var(--font-testo);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
   }
 
   h1, h2, h3, h4 {
     font-family: var(--font-titoli);
+    font-weight: 650;
   }
 
+  h1 {
+    font-size: var(--text-h1);
+    line-height: var(--text-h1--line-height);
+  }
+
+  h2 {
+    font-size: var(--text-h2);
+    line-height: var(--text-h2--line-height);
+    font-weight: 600;
+  }
+
+  h3, h4 {
+    font-size: var(--text-h3);
+    line-height: var(--text-h3--line-height);
+    font-weight: 600;
+  }
+
+  /*
+    Segnale su carta è 2.1:1 (vedi design-plan §1): troppo poco anche per un
+    outline (serve 3:1 non-text). Il verde regge il contrasto ovunque tranne
+    che sui fondi scuri già verdi, dove passiamo a carta.
+  */
   :focus-visible {
-    outline: 3px solid var(--color-segnale);
+    outline: 3px solid var(--color-verde);
     outline-offset: 2px;
+  }
+
+  .bg-verde :focus-visible {
+    outline-color: var(--color-carta);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -47,6 +96,65 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .btn {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-card);
+    padding-inline: 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background-color: var(--color-verde);
+    color: var(--color-carta);
+  }
+
+  .btn-primary:hover {
+    background-color: color-mix(in srgb, var(--color-verde) 85%, black);
+  }
+
+  .btn-secondary {
+    border: 2px solid var(--color-verde);
+    color: var(--color-verde);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-nebbia);
+  }
+
+  /* Arco: l'unico elemento grafico ricorrente (design-plan §4.1). */
+  .arco-nodo {
+    offset-distance: 0%;
+    animation: arco-percorso 2.5s 0.3s ease-in-out both;
+  }
+
+  @keyframes arco-percorso {
+    0% {
+      offset-distance: 0%;
+      opacity: 0;
+    }
+    12% {
+      opacity: 1;
+    }
+    100% {
+      offset-distance: 100%;
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .arco-nodo {
+      offset-distance: 100%;
+      opacity: 1;
+      animation: none;
     }
   }
 }

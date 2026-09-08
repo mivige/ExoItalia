@@ -1,0 +1,59 @@
+# Partner e sostenitori mostrati in home. Chiave = slug univoco, usato come id.
+#
+# Per aggiungere un partner, copia questo blocco e cambia i valori
+# (guida completa in CONTENT.md):
+#
+# slug-nuovo-partner:
+#   nome: "Nome Partner"
+#   url: "https://esempio.it"
+#   tipo: "partner" # partner | sostenitore | patrocinio
+#   logo: "/images/partners/slug-nuovo-partner.svg" # opzionale, altrimenti placeholder
+#
+# TODO: da confermare con il team la classificazione "tipo" di ciascun
+# partner (partner / sostenitore / patrocinio) — qui impostata di default
+# a "partner" in assenza di indicazioni nel brief.
+
+ai-sparks:
+  nome: "AI Sparks"
+  url: "http://aisparks.it"
+  tipo: "partner"
+
+technoscience:
+  nome: "Technoscience"
+  url: "https://www.technoscience.it/"
+  tipo: "partner"
+
+tobe-srl:
+  nome: "ToBe Srl"
+  url: "https://tobe-srl.it/"
+  tipo: "partner"
+
+tedx-lago-di-fogliano:
+  nome: "TEDx Lago di Fogliano"
+  url: "https://www.tedxlagodifogliano.com/"
+  tipo: "partner"
+
+open-hub-lazio:
+  nome: "Open Hub Lazio"
+  url: "https://openhublazio.it/"
+  tipo: "partner"
+
+lazio-innova:
+  nome: "Lazio Innova"
+  url: "https://www.lazioinnova.it/"
+  tipo: "partner"
+
+virgilio-2080:
+  nome: "Virgilio 2080"
+  url: "https://www.virgilio2080.it/"
+  tipo: "partner"
+
+the-space-coworking:
+  nome: "The Space Coworking"
+  url: "https://www.thespacecoworking.website/"
+  tipo: "partner"
+
+foooball:
+  nome: "Foooball"
+  url: "https://foooball.com/it"
+  tipo: "partner"

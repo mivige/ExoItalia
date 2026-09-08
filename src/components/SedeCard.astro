@@ -1,0 +1,39 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Placeholder from "./Placeholder.astro";
+
+interface Props {
+  sede: CollectionEntry<"sedi">;
+}
+
+const { sede } = Astro.props;
+const { nome, citta, claim, sommario, stato, copertina, copertinaAlt } = sede.data;
+---
+
+<a
+  href={`/sedi/${sede.id}`}
+  class="grid overflow-hidden rounded-card border border-pietra sm:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]"
+>
+  <div class="bg-nebbia">
+    {
+      copertina ? (
+        <img src={copertina} alt={copertinaAlt} class="h-full w-full object-cover" />
+      ) : (
+        <Placeholder ratio="4/3" label={`${nome} — copertina`} />
+      )
+    }
+  </div>
+  <div class="flex flex-col justify-center gap-2 p-6">
+    {
+      stato === "in-avvio" && (
+        <span class="inline-flex w-fit items-center rounded-card bg-verde px-2.5 py-1 text-small font-medium text-segnale">
+          In avvio
+        </span>
+      )
+    }
+    <h3 class="text-h3 font-titoli font-semibold text-verde">{nome}</h3>
+    <p class="text-small text-verde/70">{citta}</p>
+    <p class="text-body-lg italic text-verde/80">{claim}</p>
+    <p class="text-body">{sommario}</p>
+  </div>
+</a>
