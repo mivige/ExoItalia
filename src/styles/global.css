@@ -130,30 +130,45 @@
     background-color: var(--color-nebbia);
   }
 
-  /* Arco: l'unico elemento grafico ricorrente (design-plan §4.1). */
-  .arco-nodo {
-    offset-distance: 0%;
-    animation: arco-percorso 2.5s 0.3s ease-in-out both;
+  /*
+    Mappa dell'hero: unico elemento grafico ricorrente (design-plan §3.1).
+    Ogni punto si accende una volta sola al caricamento, con un ritardo
+    diverso (--ritardo, impostato inline per punto) per dare l'idea di
+    "l'innovazione che illumina ogni luogo" via via.
+  */
+  .punto-luce {
+    r: 3;
+    fill: var(--color-carta);
+    stroke: var(--color-pietra);
+    stroke-width: 1.4;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: accendi 0.6s ease-out var(--ritardo, 0s) both;
   }
 
-  @keyframes arco-percorso {
+  @keyframes accendi {
     0% {
-      offset-distance: 0%;
-      opacity: 0;
+      r: 2;
+      fill: var(--color-carta);
+      stroke: var(--color-pietra);
     }
-    12% {
-      opacity: 1;
+    55% {
+      r: 4.5;
+      fill: var(--color-segnale);
+      stroke: var(--color-segnale);
     }
     100% {
-      offset-distance: 100%;
-      opacity: 1;
+      r: 3.4;
+      fill: var(--color-segnale);
+      stroke: var(--color-segnale);
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .arco-nodo {
-      offset-distance: 100%;
-      opacity: 1;
+    .punto-luce {
+      r: 3.4;
+      fill: var(--color-segnale);
+      stroke: var(--color-segnale);
       animation: none;
     }
   }

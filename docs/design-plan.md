@@ -82,47 +82,51 @@ con margine per non essere al limite su font larghi come Atkinson).
 
 ## 3. Concept di layout
 
-### 3.1 Principio guida dell'hero: l'inversione di rotta
+### 3.1 Principio guida dell'hero: l'Italia che si illumina
 
-Non foto a piena larghezza con titolo sopra (quello è Wix). Il logo
-suggerisce già la metafora giusta: un **anello aperto con un nodo che lo
-percorre** — un'orbita, un percorso che parte e può tornare. È esattamente
-"l'esodo che si inverte in ritorno."
+Non foto a piena larghezza con titolo sopra (quello è Wix). Il payoff
+dice letteralmente "un'Italia in cui l'innovazione illumina ogni luogo,
+fatta di territori che invitano a restare": il visivo illustra proprio
+questa frase invece di affiancarla in astratto.
 
-Trattamento: un arco sottile (lo stesso raggio/gesto del logo, non un
-cerchio chiuso — un arco aperto, come un tratto di orbita) attraversa
-l'hero da un bordo all'altro, dietro/accanto al testo. Un nodo pieno color
-`segnale` parte da un'estremità dell'arco, lo percorre verso l'esterno e
-poi curva indietro fino a fermarsi vicino al testo — un solo movimento,
-orchestrato, ~2.5s, **al caricamento e una volta sola** (non in loop, non
-legato allo scroll). È realizzato in CSS puro (`@keyframes` su un
-`<path>`/nodo SVG), quindi non richiede JavaScript e il testo dell'headline
-resta markup normale, leggibile e indicizzabile a JS disattivato. Con
-`prefers-reduced-motion: reduce` il nodo si ferma nella posizione finale
-senza animare.
+Trattamento: la sagoma dell'Italia (con Sicilia e Sardegna), proiettata
+da dati geografici reali e non disegnata a mano, in tratto sottile
+`pietra`. Sopra, una decina di punti — posizionati su coordinate reali di
+città, deliberatamente sparsi verso la periferia e non solo sui grandi
+centri (Torino, Alessandria, Venezia, Firenze, Campobasso, Latina, Bari,
+Potenza, Reggio Calabria, Cagliari: tra questi, non a caso, le due sedi
+della rete) — si accendono uno dopo l'altro in `segnale` al caricamento,
+**una volta sola** (non in loop, non legato allo scroll), poi restano
+accesi. È realizzato in CSS puro (`@keyframes` su ogni `<circle>`, un
+ritardo diverso per punto), quindi non richiede JavaScript e il testo
+dell'headline resta markup normale, leggibile e indicizzabile a JS
+disattivato. Con `prefers-reduced-motion: reduce` i punti compaiono già
+accesi, senza animare.
 
 Il titolo resta testo normale (niente parole colorate, niente corsivo
-isolato): è l'arco a fare il lavoro visivo, non la tipografia deformata.
+isolato): è la mappa a fare il lavoro visivo, non la tipografia deformata.
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│  [Header: logo · Chi siamo · Attività · Sedi · (News) · Contatti]    │
+│  [Header: logo · Chi siamo · Attività · Rete · (News) · Contatti]    │
 ├──────────────────────────────────────────────────────────────────────┤
 │                                                                        │
-│     ╭──────╮                                                         │
-│    ╱        ╲                        L'innovazione                  │
-│   │      •┄┄┄┼┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄▶  contro l'esodo                 │
-│    ╲        ╱                                                        │
-│     ╰──────╯      Un'Italia in cui l'innovazione illumina ogni       │
-│   (arco, sfondo)   luogo, fatta di territori che invitano a restare. │
-│                                                                        │
-│                    [Entra nella community]   Scopri chi siamo →      │
+│      .-·´¯`·-.                                                       │
+│     /  ·   ·   \                     L'innovazione                  │
+│    |  ·    •    |                    contro l'esodo                 │
+│     \   •    ·  /                                                    │
+│      `-.....-´       Un'Italia in cui l'innovazione illumina ogni    │
+│  (sagoma Italia,       luogo, fatta di territori che invitano a      │
+│   punti che si          restare.                                     │
+│   accendono)                                                         │
+│                    [Entra nella community]   Scopri chi siamo        │
 │                                                                        │
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
-Su mobile l'arco si comprime in un tratto verticale corto dietro al titolo,
-non sparisce: resta un elemento di continuità col logo su ogni breakpoint.
+Su mobile la sagoma si restringe (stesso viewBox, larghezza minore) sopra
+al testo, non sparisce: resta un elemento di continuità su ogni
+breakpoint.
 
 ### 3.2 Corpo pagina — evitare la griglia di card identiche
 
@@ -193,11 +197,10 @@ del tutto — niente titolo orfano sopra il vuoto.
 
 ## 4. Principi guida (specifici per questo progetto)
 
-1. **L'arco è l'unico elemento grafico ricorrente**, non decorativo. Compare
-   nell'hero (animato) e, in forma statica e minima, come separatore prima
-   della CTA finale di ogni pagina lunga. Non lo uso come bullet, non lo
-   metto su ogni card: se è ovunque perde significato quanto l'eyebrow che
-   voglio evitare.
+1. **La mappa dell'hero è un momento isolato, non un motivo ricorrente.**
+   Vive solo lì, dove illustra letteralmente il payoff. Non la riuso come
+   bullet, non la metto su ogni card: uno strato grafico che compare
+   ovunque perde significato quanto l'eyebrow che voglio evitare.
 2. **Il verde scuro porta peso istituzionale, il verde chiaro porta
    attenzione — mai il contrario.** Sezioni scure (`verde` di sfondo) sono
    rare e segnano un cambio di registro (footer, CTA finale, badge "sede
@@ -230,14 +233,23 @@ risultato pratico è lo stesso che il brief intendeva: l'accento chiaro
 vive su fondo scuro o come superficie non testuale, mai come testo su
 `carta`.
 
-### 5.2 Il primo giro dell'hero era troppo "SaaS"
+### 5.2 Il primo giro dell'hero era troppo "SaaS" (e anche il secondo)
 
 La prima versione che avevo in mente era un badge sfumato verde dietro al
 titolo con un piccolo cerchio decorativo — l'ho scartata perché è
 esattamente il tipo di "forma organica sfocata dietro il testo" che si
-vede in ogni landing page generata. L'ho sostituita con l'arco che cito
-esplicitamente nel logo esistente, con un movimento che *significa*
-qualcosa (va fuori e torna) invece di essere puro riempimento.
+vede in ogni landing page generata. L'ho sostituita con un arco aperto
+che citava il logo, con un nodo che lo percorreva una volta al
+caricamento.
+
+In pratica non ha funzionato: la geometria dell'arco (raggio più piccolo
+della metà della corda tra i due estremi) veniva corretta silenziosamente
+da SVG in un semplice semicerchio diagonale, e anche corretta a dovere
+l'idea restava un cerchio astratto con un pallino che lo percorre — si
+legge come uno spinner di caricamento, non come "si parte e si torna".
+L'ho sostituita con la sagoma dell'Italia (§3.1): stesso vincolo (un solo
+momento animato, CSS puro, si ferma con `prefers-reduced-motion`), ma
+illustra la frase del payoff invece di restarle accanto in astratto.
 
 ### 5.3 "Cosa facciamo" rischiava di diventare tre card uguali
 
