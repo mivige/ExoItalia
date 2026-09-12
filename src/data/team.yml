@@ -28,21 +28,22 @@ francesco-pappone:
   email: "francesco.pappone@exoitalia.it"
   linkedin: "https://www.linkedin.com/in/francesco-pappone-914b51197/"
 
-federico-califano:
+damia-noce:
   ordine: 3
-  nome: "Federico Califano"
+  nome: "Damia Noce"
   ruolo: "Segretario"
-  bio: "Ingegneria Meccanica alla Sapienza e Collegio Universitario Lamaro-Pozzani. Dottorando in Meccanica Teorica e Applicata, CTO di AiSparks."
-  email: "federico.califano@exoitalia.it"
-  linkedin: "https://www.linkedin.com/in/federicocalifano/"
+  bio: "Ph.D. in Statistica Applicata presso la Medical University of Innsbruck. Oggi consulente in ambito farmaceutico."
+  email: "damia.noce@exoitalia.it"
+  linkedin: "https://www.linkedin.com/in/damia-noce-ph-d-252a0a40/"
+  foto: "/images/team/damia_noce.jpeg"
 
-carlo-francesco-porcelli:
+michele-vincenzo-gentile:
   ordine: 4
-  nome: "Carlo Francesco Porcelli"
+  nome: "Michele Vincenzo Gentile"
   ruolo: "Tesoriere"
-  bio: "Economia e Management alla LUISS Guido Carli. Head of Sales in JELU Consulting; nel 2023 ha cofondato TraynMe a Tallinn."
-  email: "carlofrancesco.porcelli@exoitalia.it"
-  linkedin: "https://www.linkedin.com/in/carlo-francesco-porcelli-b03300188/"
+  bio: "Laureato in Informatica e studente magistrale alla Sapienza con periodi di studio all'estero. Già delegato per la gestione di progetti universitari e rappresentante per la qualità accademica, è Head of Marketing & Design per il Sapienza Gladiators Racing Team."
+  email: "michele.gentile@exoitalia.it"
+  linkedin: "https://www.linkedin.com/in/mivige/"
 
 niccolo-di-filippo:
   ordine: 5
