@@ -1,4 +1,4 @@
-# Design plan — Exo Italia
+# Design plan — Exo Latina
 
 M1. Scritto prima di toccare CSS o componenti. Contiene la palette, la
 tipografia, il concept di layout con wireframe, i principi guida, e infine

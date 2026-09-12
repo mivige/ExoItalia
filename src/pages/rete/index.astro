@@ -1,0 +1,64 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { withBase } from "../../lib/paths";
+
+const rete = (await getCollection("rete")).sort((a, b) => a.data.nome.localeCompare(b.data.nome));
+---
+
+<Base
+  title="Rete - Exo Latina"
+  description="Da Exo Latina è nata Exo Italia: una rete di sedi locali autonome, ognuna con il proprio sito, unite dallo stesso metodo contro l'esodo giovanile."
+>
+  <Header />
+  <main>
+    <section class="border-b border-pietra">
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <h1 class="text-h1 font-titoli font-semibold text-verde">Rete</h1>
+        <p class="mt-6 max-w-prose text-body-lg">
+          Da Exo Latina è nata Exo Italia, una rete più grande che porta
+          lo stesso metodo (mettere in rete talenti e territori contro
+          l'esodo giovanile) in altri luoghi. Ogni sede è un gruppo
+          locale autonomo, con una propria organizzazione: quando ha un
+          sito attivo, lo trovi qui sotto.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <div class="grid gap-6 md:grid-cols-2">
+          {
+            rete.map((sede) => (
+              <a
+                href={sede.data.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex flex-col gap-2 rounded-card border border-pietra p-6"
+              >
+                {sede.data.stato === "in-avvio" && (
+                  <span class="inline-flex w-fit items-center rounded-card bg-verde px-2.5 py-1 text-small font-medium text-segnale">
+                    In avvio
+                  </span>
+                )}
+                <h2 class="text-h3 font-titoli font-semibold text-verde">{sede.data.nome}</h2>
+                <p class="text-body">{sede.data.sommario}</p>
+                <span class="text-small underline decoration-verde/40 underline-offset-4">Vai al sito</span>
+              </a>
+            ))
+          }
+        </div>
+
+        <p class="mt-12 max-w-prose text-body-lg">
+          Vuoi portare Exo nel tuo territorio?{" "}
+          <a href={withBase("/contatti")} class="underline decoration-verde/40 underline-offset-4 hover:decoration-verde">
+            Scrivici
+          </a>.
+        </p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>

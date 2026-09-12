@@ -8,7 +8,7 @@ const haNews = (await getCollection("news", (entry) => !entry.data.bozza)).lengt
 const voci = [
   { href: "/chi-siamo", etichetta: "Chi siamo" },
   { href: "/attivita", etichetta: "Attività" },
-  { href: "/sedi", etichetta: "Sedi" },
+  { href: "/rete", etichetta: "Rete" },
   ...(haNews ? [{ href: "/news", etichetta: "News" }] : []),
   { href: "/trasparenza", etichetta: "Trasparenza" },
   { href: "/contatti", etichetta: "Contatti" },
@@ -21,7 +21,7 @@ const isActive = (href: string) => path.startsWith(withBase(href));
 <header class="border-b border-pietra bg-carta">
   <div class="mx-auto flex max-w-page flex-wrap items-center justify-between gap-x-4 px-6 py-4">
     <a href={withBase("/")} class="flex items-center gap-3">
-      <img src={withBase("/images/logo_exo.png")} alt={site.nome} class="h-10 w-10" width="40" height="40" />
+      <img src={withBase("/images/exo-latina-colori.png")} alt={site.nome} class="h-10 w-10" width="40" height="40" />
       <span class="text-h3 font-titoli font-semibold">{site.nome}</span>
     </a>
 

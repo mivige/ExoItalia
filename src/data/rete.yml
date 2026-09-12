@@ -1,0 +1,17 @@
+# Altre sedi della rete Exo Italia, mostrate in /rete. Exo Latina (questo
+# sito) non compare in questo elenco: è la sede da cui la rete è nata.
+#
+# Per aggiungere una nuova sede quando avrà un sito proprio, copia questo
+# blocco e cambia i valori (guida completa in CONTENT.md):
+#
+# slug-sede:
+#   nome: "Exo ..."
+#   stato: "in-avvio" # "attiva" | "in-avvio"
+#   url: "https://..."
+#   sommario: "Una frase su questa sede."
+
+molise:
+  nome: "Exo Molise"
+  stato: "attiva"
+  url: "https://www.exomolise.it/"
+  sommario: "Una sede della rete Exo con un proprio sito e una propria organizzazione, indipendenti da questo."

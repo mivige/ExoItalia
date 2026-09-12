@@ -1,12 +1,16 @@
 ---
+import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import TeamCard from "../components/TeamCard.astro";
+
+const consiglioDirettivo = (await getCollection("team")).sort((a, b) => a.data.ordine - b.data.ordine);
 ---
 
 <Base
-  title="Chi siamo — Exo Italia"
-  description="Exo Italia è un progetto collettivo nato nel 2021 a Latina per unire talenti e risorse e creare prospettive dove l'esodo giovanile le ha ridotte."
+  title="Chi siamo — Exo Latina"
+  description="Exo Latina è un progetto collettivo nato nel 2021 per unire talenti e risorse e creare prospettive dove l'esodo giovanile le ha ridotte."
 >
   <Header />
   <main>
@@ -14,13 +18,12 @@ import Footer from "../components/Footer.astro";
       <div class="mx-auto max-w-page px-6 py-16 md:py-24">
         <h1 class="text-h1 font-titoli font-semibold text-verde">Chi siamo</h1>
         <p class="mt-6 max-w-prose text-body-lg">
-          Exo Italia è un progetto collettivo nato nel 2021 a Latina, dalla
-          visione condivisa di persone che si erano trasferite in altre
-          città italiane e straniere per studiare e lavorare. Oggi stiamo
-          costruendo community analoghe in altri territori dove l'esodo
-          giovanile involontario è una sfida quotidiana. L'obiettivo è
-          sempre lo stesso: unire talenti e risorse per creare prospettive
-          dove servono di più.
+          Exo nasce a Latina nel 2021, dalla visione condivisa di persone
+          che si erano trasferite in altre città italiane e straniere per
+          studiare e lavorare e hanno deciso di rimettere quel percorso al
+          servizio del proprio territorio. Da questa prima community è
+          nata una rete più ampia, Exo Italia: il metodo che le nuove sedi
+          condividono è nato qui.
         </p>
       </div>
     </section>
@@ -62,6 +65,15 @@ import Footer from "../components/Footer.astro";
           facciamo con progetti innovativi e sostenibili, insieme a chi
           quei territori li vive.
         </p>
+      </div>
+    </section>
+
+    <section class="border-t border-pietra">
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <h2 class="font-titoli font-semibold text-verde">Consiglio direttivo</h2>
+        <ul class="mt-10">
+          {consiglioDirettivo.map((persona) => <TeamCard persona={persona} />)}
+        </ul>
       </div>
     </section>
   </main>

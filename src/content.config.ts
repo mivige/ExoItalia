@@ -67,53 +67,16 @@ const team = defineCollection({
   }),
 });
 
-// src/content/sedi/{slug}.md — una sede locale per file.
-const sedi = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "src/content/sedi" }),
+// src/data/rete.yml — altre sedi della rete Exo Italia, con un sito
+// proprio, mostrate in /rete. Exo Latina (questo sito) non è tra queste:
+// è la sede da cui la rete è nata.
+const rete = defineCollection({
+  loader: file("src/data/rete.yml"),
   schema: z.object({
     nome: z.string(),
-    citta: z.string(),
-    regione: z.string(),
     stato: z.enum(["attiva", "in-avvio"]),
-    // Nullable (non solo opzionale): per una sede "in-avvio" l'anno non è
-    // ancora noto, ma il campo resta esplicito nel frontmatter per
-    // ricordare all'editor che va confermato.
-    annoAvvio: z.number().nullable(),
-    ordine: z.number(),
-    claim: z.string().max(80, "Il claim deve stare entro 80 caratteri"),
+    url: z.url(),
     sommario: z.string(),
-    email: z.email().nullable(),
-    // Presente solo per sedi gestite come siti indipendenti (es. Molise):
-    // la scheda esiste ma rimanda al sito esterno invece di avere una
-    // pagina interna.
-    esterno: z.url().optional(),
-    copertina: z.string().optional(),
-    copertinaAlt: z.string().optional(),
-    referenti: z
-      .array(
-        z.object({
-          nome: z.string(),
-          ruolo: z.string(),
-          linkedin: z.url().optional(),
-        }),
-      )
-      .optional(),
-    attivita: z
-      .array(
-        z.object({
-          titolo: z.string(),
-          descrizione: z.string(),
-        }),
-      )
-      .optional(),
-    social: z
-      .object({
-        instagram: z.url().optional(),
-      })
-      .optional(),
-  }).refine((sede) => !sede.copertina || !!sede.copertinaAlt, {
-    message: "copertinaAlt è obbligatorio quando è presente copertina",
-    path: ["copertinaAlt"],
   }),
 });
 
@@ -127,7 +90,6 @@ const news = defineCollection({
       sommario: z.string().max(200, "Il sommario deve stare entro 200 caratteri"),
       copertina: z.string().optional(),
       copertinaAlt: z.string().optional(),
-      sede: z.enum(["latina", "molise", "nazionale"]),
       bozza: z.boolean().default(false),
     })
     .refine((n) => !n.copertina || !!n.copertinaAlt, {
@@ -136,4 +98,4 @@ const news = defineCollection({
     }),
 });
 
-export const collections = { site, partners, stats, team, sedi, news };
+export const collections = { site, partners, stats, team, rete, news };

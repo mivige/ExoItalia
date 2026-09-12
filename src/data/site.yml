@@ -2,7 +2,7 @@
 # Cambiare qui il dominio quando sarà definitivo (e allinearlo a "site" in astro.config.mjs).
 # Struttura a mappa con una sola chiave "site": è così che la collection file() la legge.
 site:
-  nome: "Exo Italia"
+  nome: "Exo Latina"
   dominio: "https://ESEMPIO.exoitalia.it" # TODO: da confermare — dominio definitivo non ancora deciso
   payoff: "L'innovazione contro l'esodo"
 

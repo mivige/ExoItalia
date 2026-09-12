@@ -1,5 +1,5 @@
-# ExoItalia
-Website of Exo Italia and local satellites.
+# ExoLatina
+Website of Exo Latina.
 
 - Aggiornare contenuti (partner, news, numeri, sedi) senza toccare
   codice: [CONTENT.md](CONTENT.md).

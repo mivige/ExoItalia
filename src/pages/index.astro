@@ -4,21 +4,19 @@ import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Hero from "../components/Hero.astro";
-import SedeCard from "../components/SedeCard.astro";
 import PartnerGrid from "../components/PartnerGrid.astro";
 import JsonLd from "../components/JsonLd.astro";
 import { withBase } from "../lib/paths";
 
 const site = (await getEntry("site", "site"))!.data;
 const stats = (await getCollection("stats")).sort((a, b) => a.data.ordine - b.data.ordine);
-const sedi = (await getCollection("sedi")).sort((a, b) => a.data.ordine - b.data.ordine);
 
 const ngoSchema = {
   "@context": "https://schema.org",
   "@type": "NGO",
   name: site.nome,
   url: site.dominio,
-  logo: new URL("/images/logo_exo.png", site.dominio).toString(),
+  logo: new URL("/images/exo-latina-colori.png", site.dominio).toString(),
   address: {
     "@type": "PostalAddress",
     streetAddress: site.sedeLegale.indirizzo,
@@ -34,8 +32,8 @@ const ngoSchema = {
 ---
 
 <Base
-  title="Exo Italia — L'innovazione contro l'esodo giovanile"
-  description="Exo Italia è un'associazione no-profit contro l'esodo giovanile involontario: mettiamo in rete talenti per creare opportunità nei territori periferici."
+  title="Exo Latina — L'innovazione contro l'esodo giovanile"
+  description="Exo Latina è un'associazione no-profit contro l'esodo giovanile involontario: mettiamo in rete talenti per creare opportunità nel territorio pontino."
 >
   <JsonLd data={ngoSchema} />
   <Header />
@@ -88,15 +86,14 @@ const ngoSchema = {
       </div>
     </section>
 
-    <section class="border-t border-pietra">
+    <section class="border-t border-pietra bg-nebbia">
       <div class="mx-auto max-w-page px-6 py-16 md:py-24">
-        <div class="flex flex-wrap items-end justify-between gap-4">
-          <h2 class="font-titoli font-semibold text-verde">Le sedi</h2>
-          <a href={withBase("/sedi")} class="btn btn-secondary">Tutte le sedi</a>
-        </div>
-        <div class="mt-10 grid gap-6 md:grid-cols-2">
-          {sedi.map((sede) => <SedeCard sede={sede} />)}
-        </div>
+        <h2 class="font-titoli font-semibold text-verde">Parte di una rete più grande</h2>
+        <p class="mt-4 max-w-prose text-body">
+          Da Exo Latina è nata Exo Italia: altre sedi locali portano lo
+          stesso metodo in altri territori.
+        </p>
+        <a href={withBase("/rete")} class="btn btn-secondary mt-8">Scopri la rete</a>
       </div>
     </section>
 

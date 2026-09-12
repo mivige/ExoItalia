@@ -34,7 +34,7 @@ export const GET: APIRoute = async () => {
   <channel>
     <title>${escapeXml(site.nome)} — News</title>
     <link>${site.dominio}</link>
-    <description>Novità ed eventi di ${escapeXml(site.nome)} e delle sue sedi locali.</description>
+    <description>Novità ed eventi di ${escapeXml(site.nome)}.</description>
     <language>it-IT</language>
 ${items}
   </channel>

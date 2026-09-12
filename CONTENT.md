@@ -1,4 +1,4 @@
-# Guida ai contenuti — Exo Italia
+# Guida ai contenuti — Exo Latina
 
 Questa guida è per chi aggiorna il sito **senza toccare codice**, dal
 browser. Non serve installare niente: si modifica tutto direttamente su
@@ -87,7 +87,6 @@ nel menu del sito** (prima resta nascosta apposta).
 titolo: "Titolo della news"
 data: 2026-03-12
 sommario: "Una o due frasi di riassunto, massimo 200 caratteri: è quella che si vede nell'elenco."
-sede: "latina" # latina | molise | nazionale
 copertina: "/images/news/2026-03-12-nuovo-progetto-latina.jpg" # opzionale
 copertinaAlt: "Descrizione dell'immagine per chi non la vede" # obbligatoria se c'è copertina
 ---
@@ -119,33 +118,27 @@ membri:
 Non toccare `ordine` (decide la posizione da sinistra a destra) né lo
 slug (`membri`, `volontari`, ecc.).
 
-## 4. Aggiornare una scheda sede
+## 4. Aggiungere o aggiornare una sede della rete
 
-File: `src/content/sedi/latina.md` o `src/content/sedi/molise.md` (uno
-per sede — per una nuova sede, copia uno di questi due file come base e
-cambia lo slug/nome file).
-
-La parte fra `---` e `---` in alto (il "frontmatter") sono i dati
-strutturati; sotto è il testo libero della pagina, in Markdown.
-
-Campi utili da aggiornare più spesso:
-- `claim`: la frase breve sotto al nome (max 80 caratteri).
-- `sommario`: 1-2 frasi, usata anche nell'anteprima Google.
-- `stato`: `"attiva"` oppure `"in-avvio"`.
-- `referenti`: elenco di persone, opzionale — se non c'è nessuno, si può
-  omettere del tutto questo campo (la sezione sparisce dalla pagina, non
-  resta un titolo vuoto):
+File: `src/data/rete.yml`. Questo sito è quello di Exo Latina: qui dentro
+vanno le **altre** sedi della rete Exo Italia (es. Exo Molise), quelle
+che hanno già un sito proprio a cui rimandare dalla pagina `/rete`.
 
 ```yaml
-referenti:
-  - nome: "Nome Cognome"
-    ruolo: "Ruolo"
-    linkedin: "https://www.linkedin.com/in/..." # opzionale
+nome-nuova-sede:
+  nome: "Exo Nome"
+  stato: "in-avvio" # "attiva" | "in-avvio"
+  url: "https://sito-della-nuova-sede.it"
+  sommario: "Una frase su questa sede."
 ```
 
-- Il testo sotto ai `---` è la parte narrativa della pagina: storia
-  della sede, progetti, eventi. Si scrive come un documento normale, con
-  `## Titolo` per le sezioni.
+- Lo slug (`nome-nuova-sede`) dev'essere unico, tutto minuscolo, senza
+  spazi (usa i trattini).
+- Per **rimuovere** una sede, cancella tutto il suo blocco.
+
+Il consiglio direttivo di Exo Latina, invece, si aggiorna in
+`src/data/team.yml` (vedi il commento in cima al file per il formato):
+compare in `/chi-siamo`.
 
 ## 5. Se il deploy fallisce
 
@@ -177,8 +170,7 @@ loghi sono già piccoli di norma.
 
 | Cosa | Cartella | Proporzioni | Note |
 |---|---|---|---|
-| Copertina sede | `public/images/sedi/` | 16:9 (es. 1600×900px) | Va ritagliata anche più quadrata nelle card della home/`/sedi`: evita testo o volti vicino ai bordi. |
-| Copertina news | `public/images/news/` | 16:9 (es. 1600×900px) | Stessa cautela della copertina sede. |
+| Copertina news | `public/images/news/` | 16:9 (es. 1600×900px) | Evita testo o volti vicino ai bordi. |
 | Foto membro consiglio direttivo | `public/images/team/` | 1:1 quadrata (min. 400×400px) | Volto centrato, sfondo semplice. |
 | Logo partner | `public/images/partners/` | libera, orizzontale preferita | Preferibilmente SVG o PNG trasparente; se il logo a colori non regge bene in scala di grigi (effetto hover), avvisa chi segue il sito. |
 | Immagine social di default (OG) | `public/images/og-default.png` | 1200×630px esatti | Già presente, generata dai colori del brand. Da rifare se cambia la palette. |
