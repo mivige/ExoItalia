@@ -13,20 +13,21 @@
 #   foto: "/images/team/slug-nome-cognome.jpg" # opzionale, altrimenti placeholder
 
 lorenzo-di-filippo:
-  ordine: 1
+  ordine: 2
   nome: "Lorenzo Di Filippo"
-  ruolo: "Presidente"
+  ruolo: "Vice Presidente"
   bio: "Laureato in Physics of Complex Systems al Politecnico di Torino e Senior Allievo del Collegio Carlo Alberto. Risk Analyst nel Global Risk Management di ENEL. Presidente di Exo dal 2020."
   email: "lorenzo.difilippo@exoitalia.it"
   linkedin: "https://www.linkedin.com/in/lorenzodifilippo/"
 
-francesco-pappone:
-  ordine: 2
-  nome: "Francesco Pappone"
-  ruolo: "Vice Presidente"
-  bio: "Fisica a Bologna e Ingegneria Matematica al Politecnico di Torino, allievo dell'Alta Scuola Politecnica XVIII. Fellow del Collège des Ingénieurs e CEO di AiSparks."
-  email: "francesco.pappone@exoitalia.it"
-  linkedin: "https://www.linkedin.com/in/francesco-pappone-914b51197/"
+valentina-dimarco:
+  ordine: 1
+  nome: "Valentina Di Marco"
+  ruolo: "Presidente"
+  bio: ""
+  email: "valentina.dimarco@exoitalia.it"
+  linkedin: "https://www.linkedin.com/in/valentinadimarco6995/"
+  foto: "/images/team/valentina_dimarco.jpg"
 
 damia-noce:
   ordine: 3
