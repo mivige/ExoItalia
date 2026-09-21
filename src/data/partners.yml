@@ -13,47 +13,56 @@
 # partner (partner / sostenitore / patrocinio) — qui impostata di default
 # a "partner" in assenza di indicazioni nel brief.
 
-ai-sparks:
-  nome: "AI Sparks"
-  url: "http://aisparks.it"
+lit:
+  nome: "Latina In Tech"
+  url: "https://www.latinaintech.org/it/events"
   tipo: "partner"
+  logo: "/images/partners/lit.png"
+
+polygonal:
+  nome: "Polygonal"
+  url: "https://polygonal.ngo/it/"
+  tipo: "partner"
+  logo: "/images/partners/polygonal.png"
+
+latina-LUG:
+  nome: "Latina Linux Users Group"
+  url: "https://www.latinalug.it/"
+  tipo: "partner"
+  logo: "/images/partners/lug.png"
+
+rotaract:
+  nome: "Rotaract"
+  url: "https://www.rotary.org/it-it/get-involved/our-clubs/rotaract-clubs"
+  tipo: "partner"
+  logo: "/images/partners/Rotaract.jpeg"
+
+nova-days:
+  nome: "Nova Days"
+  url: "https://www.novadays.it/"
+  tipo: "partner"
+  logo: "/images/partners/nova.png"
 
 technoscience:
   nome: "Technoscience"
   url: "https://www.technoscience.it/"
   tipo: "partner"
+  logo: "/images/partners/technoscience.jpeg"
 
 tobe-srl:
   nome: "ToBe Srl"
   url: "https://tobe-srl.it/"
   tipo: "partner"
-
-tedx-lago-di-fogliano:
-  nome: "TEDx Lago di Fogliano"
-  url: "https://www.tedxlagodifogliano.com/"
-  tipo: "partner"
+  logo: "/images/partners/ToBe.webp"
 
 open-hub-lazio:
   nome: "Open Hub Lazio"
   url: "https://openhublazio.it/"
   tipo: "partner"
-
-lazio-innova:
-  nome: "Lazio Innova"
-  url: "https://www.lazioinnova.it/"
-  tipo: "partner"
-
-virgilio-2080:
-  nome: "Virgilio 2080"
-  url: "https://www.virgilio2080.it/"
-  tipo: "partner"
+  logo: "/images/partners/openhub.png"
 
 the-space-coworking:
   nome: "The Space Coworking"
   url: "https://www.thespacecoworking.website/"
   tipo: "partner"
-
-foooball:
-  nome: "Foooball"
-  url: "https://foooball.com/it"
-  tipo: "partner"
+  logo: "/images/partners/thespace.png"
