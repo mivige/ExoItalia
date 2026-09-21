@@ -13,18 +13,19 @@
 #   foto: "/images/team/slug-nome-cognome.jpg" # opzionale, altrimenti placeholder
 
 lorenzo-di-filippo:
-  ordine: 2
+  ordine: 5
   nome: "Lorenzo Di Filippo"
-  ruolo: "Vice Presidente"
-  bio: "Laureato in Physics of Complex Systems al Politecnico di Torino e Senior Allievo del Collegio Carlo Alberto. Risk Analyst nel Global Risk Management di ENEL. Presidente di Exo dal 2020."
+  ruolo: "Membro del consiglio direttivo"
+  bio: "Laureato in Physics of Complex Systems al Politecnico di Torino e Senior Allievo del Collegio Carlo Alberto. Lavora nel settore del risk management finanziario."
   email: "lorenzo.difilippo@exoitalia.it"
   linkedin: "https://www.linkedin.com/in/lorenzodifilippo/"
+  foto: "/images/team/lorenzo_difilippo.jpeg"
 
 valentina-dimarco:
   ordine: 1
   nome: "Valentina Di Marco"
-  ruolo: "Presidente"
-  bio: ""
+  ruolo: "Presidentessa"
+  bio: "Project Manager e Sviluppatrice Back-End con esperienza internazionale in contesti enterprise e startup. Attualmente coordina iniziative di innovazione, percorsi di formazione e mentoring per la valorizzazione dei talenti territoriali."
   email: "valentina.dimarco@exoitalia.it"
   linkedin: "https://www.linkedin.com/in/valentinadimarco6995/"
   foto: "/images/team/valentina_dimarco.jpg"
@@ -32,7 +33,7 @@ valentina-dimarco:
 damia-noce:
   ordine: 3
   nome: "Damia Noce"
-  ruolo: "Segretario"
+  ruolo: "Segretaria"
   bio: "Ph.D. in Statistica Applicata presso la Medical University of Innsbruck. Oggi consulente in ambito farmaceutico."
   email: "damia.noce@exoitalia.it"
   linkedin: "https://www.linkedin.com/in/damia-noce-ph-d-252a0a40/"
@@ -47,9 +48,9 @@ michele-vincenzo-gentile:
   linkedin: "https://www.linkedin.com/in/mivige/"
 
 niccolo-di-filippo:
-  ordine: 5
+  ordine: 2
   nome: "Niccolò Di Filippo"
-  ruolo: "Membro del consiglio direttivo"
+  ruolo: "Vice Presidente"
   bio: "Economia e Management alla LUISS Guido Carli. CMO di AiSparks, segue tecnologia e startup."
   email: "niccolo.difilippo@exoitalia.it"
   linkedin: "https://www.linkedin.com/in/niccolò-di-filippo-0467901a2/"
