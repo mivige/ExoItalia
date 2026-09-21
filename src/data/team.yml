@@ -46,11 +46,13 @@ michele-vincenzo-gentile:
   bio: "Laureato in Informatica e studente magistrale alla Sapienza con periodi di studio all'estero. Già delegato per la gestione di progetti universitari e rappresentante per la qualità accademica, è Head of Marketing & Design per il Sapienza Gladiators Racing Team."
   email: "michele.gentile@exoitalia.it"
   linkedin: "https://www.linkedin.com/in/mivige/"
+  foto: "/images/team/michele_gentile.jpeg"
 
 niccolo-di-filippo:
   ordine: 2
   nome: "Niccolò Di Filippo"
   ruolo: "Vice Presidente"
-  bio: "Economia e Management alla LUISS Guido Carli. CMO di AiSparks, segue tecnologia e startup."
+  bio: "Laureato in Economia e Management e studente magistrale in Strategic Management presso la Luiss “Guido Carli”. Organizzatore del TEDxLatina. Appassionato di marketing e tecnologia, ha all'attivo esperienze sul campo da founder e dipendente tra startup e PMI innovative."
   email: "niccolo.difilippo@exoitalia.it"
   linkedin: "https://www.linkedin.com/in/niccolò-di-filippo-0467901a2/"
+  foto: "/images/team/niccolo_difilippo.jpeg"
