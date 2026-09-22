@@ -3,7 +3,7 @@
 # Struttura a mappa con una sola chiave "site": è così che la collection file() la legge.
 site:
   nome: "Exo Latina"
-  dominio: "https://ESEMPIO.exoitalia.it" # TODO: da confermare — dominio definitivo non ancora deciso
+  dominio: "https://exolatina.it/" # TODO: da confermare — dominio definitivo non ancora deciso
   payoff: "L'innovazione contro l'esodo"
 
   sedeLegale:
