@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
 
-# TODO: togliere il prefisso /ExoItalia/ quando il dominio definitivo
-# andrà in produzione (vedi "base" in astro.config.mjs).
-Sitemap: https://ESEMPIO.exoitalia.it/ExoItalia/sitemap-index.xml
+Sitemap: https://exolatina.it/sitemap-index.xml
