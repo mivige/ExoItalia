@@ -27,3 +27,7 @@ site:
 
   privacyUrl: "https://www.iubenda.com/privacy-policy/11896394"
   cookieUrl: "https://www.iubenda.com/privacy-policy/11896394/cookie-policy"
+
+  # Cloudflare Web Analytics: statistiche anonime, senza cookie (nessun banner richiesto).
+  # Il token è pubblico. Lasciarlo vuoto (null) disattiva lo script.
+  cloudflareAnalyticsToken: "f50afc0e21d64ec88605e81859836d88"

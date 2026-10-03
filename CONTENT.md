@@ -179,3 +179,15 @@ Il limite di peso di **tutto il repository** è di circa 1 GB (limite di
 GitHub Pages): con foto comprimibili sotto i 300 KB l'una, c'è margine
 per centinaia di immagini, ma comprimere resta comunque buona norma per
 la velocità di caricamento del sito.
+
+## 7. Statistiche delle visite
+
+Il sito usa **Cloudflare Web Analytics**: conta visite, pagine viste,
+provenienza e dispositivi in forma anonima, senza cookie (per questo non
+serve il banner). Per consultare i dati: accedi a
+[dash.cloudflare.com](https://dash.cloudflare.com) con l'account
+dell'associazione → **Analytics & Logs** → **Web Analytics** → `exolatina.it`.
+
+Gli utenti con adblocker non vengono contati: i numeri sono una stima per
+difetto. Il token si trova in `src/data/site.yml`
+(`cloudflareAnalyticsToken`); mettendo `null` lo script viene disattivato.

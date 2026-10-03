@@ -26,6 +26,10 @@ const site = defineCollection({
     }),
     privacyUrl: z.url(),
     cookieUrl: z.url(),
+    cloudflareAnalyticsToken: z
+      .string()
+      .regex(/^[0-9a-f]{32}$/, "Il token Cloudflare deve essere di 32 caratteri esadecimali")
+      .nullable(),
   }),
 });
 
