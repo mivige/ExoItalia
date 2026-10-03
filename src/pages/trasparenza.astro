@@ -2,25 +2,28 @@
 import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { getEntry } from "astro:content";
 
-// TODO: far verificare i contenuti obbligatori di questa pagina a chi
-// segue l'amministrazione dell'associazione — dipendono dalla forma
-// giuridica (L. 124/2017, pubblicità di contributi pubblici > 10.000 €).
+const site = (await getEntry("site", "site"))!.data;
+
+// L'associazione non è iscritta al RUNTS: nessun obbligo di pubblicare
+// statuto e bilanci. Resta la pubblicità dei contributi pubblici
+// sopra i 10.000 € (L. 124/2017).
 
 const contributi = [
   {
-    anno: null as string | null, // TODO: da confermare
+    anno: "2022", // anno del contributo; il progetto si è svolto nel 2023
     ente: "Regione Lazio",
     importo: "21.200 €",
     progetto:
-      "Latina Innovation Community — bando Vitamina G, programma GenerAzioniGiovani.it (Politiche Giovanili della Regione Lazio, con il sostegno del Dipartimento per la Gioventù), a favore di Associazione Giovanile Exo Latina (C.F. 91170700594), erogato da Regione Lazio (C.F. 80143490581).",
+      "Latina Innovation Community (progetto realizzato nel 2023) — bando Vitamina G, programma GenerAzioniGiovani.it (Politiche Giovanili della Regione Lazio, con il sostegno del Dipartimento per la Gioventù), a favore di Associazione Giovanile Exo Latina (C.F. 91170700594), erogato da Regione Lazio (C.F. 80143490581).",
   },
 ];
 ---
 
 <Base
   title="Trasparenza - Exo Latina"
-  description="Statuto, bilanci e contributi pubblici ricevuti da Exo Latina, in linea con gli obblighi di pubblicità della L. 124/2017."
+  description="I contributi pubblici ricevuti da Exo Latina, pubblicati secondo la L. 124/2017, e come richiedere statuto e bilanci dell'associazione."
 >
   <Header />
   <main>
@@ -30,25 +33,22 @@ const contributi = [
         <p class="mt-6 max-w-prose text-body-lg">
           Exo Latina riceve anche contributi pubblici. La legge 124/2017
           impone di darne pubblicità quando superano i 10.000 €: questa
-          pagina raccoglie statuto, bilanci e i contributi ricevuti.
-        </p>
-      </div>
-    </section>
-
-    <section class="border-b border-pietra">
-      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
-        <h2 class="font-titoli font-semibold text-verde">Statuto</h2>
-        <p class="mt-4 max-w-prose text-body text-verde/75">
-          Documento in fase di pubblicazione.
+          pagina raccoglie i contributi ricevuti.
         </p>
       </div>
     </section>
 
     <section class="border-b border-pietra bg-nebbia">
       <div class="mx-auto max-w-page px-6 py-16 md:py-24">
-        <h2 class="font-titoli font-semibold text-verde">Bilanci</h2>
-        <p class="mt-4 max-w-prose text-body text-verde/75">
-          Documenti in fase di pubblicazione.
+        <h2 class="font-titoli font-semibold text-verde">Statuto e bilanci</h2>
+        <p class="mt-4 max-w-prose text-body">
+          Exo Latina non è iscritta al Registro Unico Nazionale del Terzo
+          Settore (RUNTS), quindi non ha l'obbligo di pubblicare statuto e
+          bilanci. Se vuoi consultarli, scrivici a
+          <a
+            href={`mailto:${site.contatti.email}`}
+            class="underline decoration-verde/40 underline-offset-4 hover:decoration-verde"
+          >{site.contatti.email}</a>.
         </p>
       </div>
     </section>
