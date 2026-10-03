@@ -19,13 +19,12 @@ const site = defineCollection({
       email: z.email(),
       telefono: z.string(),
     }),
+    ragioneSociale: z.string(),
     codiceFiscale: z.string().nullable(),
     social: z.object({
       instagram: z.url(),
       linkedin: z.url(),
     }),
-    privacyUrl: z.url(),
-    cookieUrl: z.url(),
     cloudflareAnalyticsToken: z
       .string()
       .regex(/^[0-9a-f]{32}$/, "Il token Cloudflare deve essere di 32 caratteri esadecimali")

@@ -16,17 +16,13 @@ site:
     email: "info@exoitalia.it"
     telefono: "+39 366 381 0743"
 
-  # codiceFiscale: TODO — da confermare con chi segue l'amministrazione dell'associazione.
-  # Il brief riporta solo il C.F. di "Associazione Giovanile Exo Latina" (91170700594),
-  # legato allo specifico contributo Vitamina G: non è detto sia lo stesso C.F. nazionale.
-  codiceFiscale: null
+  # Ente giuridico titolare del sito e del trattamento dei dati (pagina /privacy).
+  ragioneSociale: "Associazione Giovanile Exo Latina"
+  codiceFiscale: "91170700594"
 
   social:
     instagram: "https://www.instagram.com/exo_latina/"
     linkedin: "https://www.linkedin.com/company/exo-lt"
-
-  privacyUrl: "https://www.iubenda.com/privacy-policy/11896394"
-  cookieUrl: "https://www.iubenda.com/privacy-policy/11896394/cookie-policy"
 
   # Cloudflare Web Analytics: statistiche anonime, senza cookie (nessun banner richiesto).
   # Il token è pubblico. Lasciarlo vuoto (null) disattiva lo script.

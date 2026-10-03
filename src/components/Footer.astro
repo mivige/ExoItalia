@@ -31,8 +31,7 @@ const indirizzo = `${site.sedeLegale.indirizzo}, ${site.sedeLegale.cap} ${site.s
     </div>
 
     <div class="flex flex-col gap-2 text-small text-carta/80">
-      <a href={site.privacyUrl} class="underline decoration-carta/30 underline-offset-4 hover:decoration-carta">Privacy Policy</a>
-      <a href={site.cookieUrl} class="underline decoration-carta/30 underline-offset-4 hover:decoration-carta">Cookie Policy</a>
+      <a href={withBase("/privacy")} class="underline decoration-carta/30 underline-offset-4 hover:decoration-carta">Privacy e cookie</a>
       {site.codiceFiscale && <span>C.F. {site.codiceFiscale}</span>}
       <span>© {anno} {site.nome}</span>
     </div>

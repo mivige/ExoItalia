@@ -1,0 +1,125 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { getEntry } from "astro:content";
+
+const site = (await getEntry("site", "site"))!.data;
+const indirizzo = `${site.sedeLegale.indirizzo}, ${site.sedeLegale.cap} ${site.sedeLegale.citta} (${site.sedeLegale.provincia})`;
+
+// Aggiornare questa data a ogni modifica sostanziale del testo.
+const aggiornamento = "3 ottobre 2026";
+
+const link = "underline decoration-verde/40 underline-offset-4 hover:decoration-verde";
+---
+
+<Base
+  title="Privacy e cookie - Exo Latina"
+  description="Come Exo Latina tratta i dati di chi visita il sito: hosting, statistiche anonime senza cookie, email ricevute e diritti degli interessati secondo il GDPR."
+>
+  <Header />
+  <main>
+    <section class="border-b border-pietra">
+      <div class="mx-auto max-w-page px-6 py-16 md:py-24">
+        <h1 class="text-h1 font-titoli font-semibold text-verde">Privacy e cookie</h1>
+        <p class="mt-6 max-w-prose text-body-lg">
+          Questo sito raccoglie il minimo indispensabile: non usa cookie,
+          non ha moduli da compilare e non profila nessuno. Qui sotto
+          trovi nel dettaglio quali dati passano, dove e perché.
+        </p>
+        <p class="mt-4 text-small text-verde/75">Ultimo aggiornamento: {aggiornamento}</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="mx-auto flex max-w-page flex-col gap-12 px-6 py-16 md:py-24">
+        <div class="max-w-prose">
+          <h2 class="font-titoli font-semibold text-verde">Titolare del trattamento</h2>
+          <p class="mt-4">
+            {site.ragioneSociale}{site.codiceFiscale && <> (C.F. {site.codiceFiscale})</>},
+            {indirizzo}. Per qualsiasi richiesta sui tuoi dati scrivi a
+            <a href={`mailto:${site.contatti.email}`} class={link}>{site.contatti.email}</a>.
+          </p>
+        </div>
+
+        <div class="max-w-prose">
+          <h2 class="font-titoli font-semibold text-verde">Dati di navigazione e hosting</h2>
+          <p class="mt-4">
+            Il sito è ospitato su GitHub Pages, servizio di GitHub, Inc.
+            (Stati Uniti). Come ogni server web, quando visiti una pagina
+            riceve il tuo indirizzo IP, che GitHub registra per motivi di
+            sicurezza e per proteggere il servizio da abusi. Base giuridica:
+            legittimo interesse a rendere il sito disponibile e sicuro
+            (art. 6.1.f GDPR). Informazioni su come GitHub tratta questi dati
+            nella sua
+            <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" class={link}>informativa privacy</a>.
+          </p>
+        </div>
+
+        <div class="max-w-prose">
+          <h2 class="font-titoli font-semibold text-verde">Statistiche delle visite</h2>
+          <p class="mt-4">
+            Per sapere quante persone visitano il sito e quali pagine
+            leggono usiamo Cloudflare Web Analytics, servizio di
+            Cloudflare, Inc. (Stati Uniti). Non usa cookie, non salva
+            informazioni sul tuo dispositivo e non ti segue su altri siti:
+            vediamo solo numeri aggregati (pagine viste, provenienza,
+            tipo di dispositivo, paese). Base giuridica: legittimo
+            interesse a capire come viene usato il sito (art. 6.1.f GDPR).
+            Dettagli nell'<a href="https://www.cloudflare.com/web-analytics/" class={link}>informativa di Cloudflare Web Analytics</a>.
+          </p>
+        </div>
+
+        <div class="max-w-prose">
+          <h2 class="font-titoli font-semibold text-verde">Se ci scrivi</h2>
+          <p class="mt-4">
+            Se ci contatti via email o telefono usiamo il tuo nome, il tuo
+            recapito e quello che ci scrivi solo per risponderti e dare
+            seguito alla tua richiesta. Non li cediamo a terzi e li
+            conserviamo per il tempo necessario a gestirla. Base giuridica:
+            la tua richiesta (art. 6.1.b GDPR).
+          </p>
+        </div>
+
+        <div class="max-w-prose">
+          <h2 class="font-titoli font-semibold text-verde">Trasferimenti fuori dall'UE</h2>
+          <p class="mt-4">
+            GitHub e Cloudflare hanno sede negli Stati Uniti e aderiscono
+            all'EU-U.S. Data Privacy Framework, riconosciuto dalla
+            Commissione europea come garanzia adeguata per il trasferimento
+            dei dati.
+          </p>
+        </div>
+
+        <div id="cookie" class="max-w-prose scroll-mt-24">
+          <h2 class="font-titoli font-semibold text-verde">Cookie</h2>
+          <p class="mt-4">
+            Questo sito non usa cookie, né tecnici né di profilazione, e
+            non salva altre informazioni nel tuo browser. Per questo non
+            trovi nessun banner di consenso. I caratteri tipografici sono
+            ospitati sul sito stesso, senza chiamate a servizi esterni.
+          </p>
+          <p class="mt-4">
+            I link a Instagram e LinkedIn sono semplici collegamenti: non
+            caricano nulla finché non ci clicchi. Una volta sulle loro
+            pagine valgono le informative di quei servizi.
+          </p>
+        </div>
+
+        <div class="max-w-prose">
+          <h2 class="font-titoli font-semibold text-verde">I tuoi diritti</h2>
+          <p class="mt-4">
+            Puoi chiederci in qualsiasi momento di accedere ai tuoi dati,
+            correggerli, cancellarli, limitarne il trattamento o opporti
+            (artt. 15–22 GDPR), scrivendo a
+            <a href={`mailto:${site.contatti.email}`} class={link}>{site.contatti.email}</a>.
+            Se ritieni che il trattamento violi la normativa puoi
+            presentare reclamo al
+            <a href="https://www.garanteprivacy.it/" class={link}>Garante per la protezione dei dati personali</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
